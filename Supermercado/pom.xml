@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>es.unican.ps</groupId>
+	<artifactId>Supermercado</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<!-- El proyecto raíz debe tener empaquetamiento tipo pom -->
+	<packaging>pom</packaging>
+
+	<!-- Lista de módulos anidados -->
+	<modules>
+		<module>SupermercadoCommon</module>
+		<module>SupermercadoBusiness</module>
+		<module>SupermercadoWeb</module>
+		<module>SupermercadoEAR</module>
+
+		<module>SupermercadoCompletoEAR</module>
+	</modules>
+
+	<dependencies>
+		<!-- Pruebas unitarias con JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Pruebas unitarias con mockito -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>3.0.0</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Java EE API -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>8.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Pruebas integración con contenedor embebido -->
+		<dependency>
+			<groupId>org.glassfish.main.extras</groupId>
+			<artifactId>glassfish-embedded-all</artifactId>
+			<version>5.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Plugin necesario para ejecutar pruebas de integración Por defecto, 
+				ejecuta en la fase integration-test las clases terminadas en IT (se puede 
+				modificar en configuration.) -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<!-- Necesario para que ejecute de manera correcta varios test seguidos -->
+					<forkMode>perTest</forkMode>
+					<!--<jvm>C:\Program Files\Java\jdk1.8.0_73\bin\java</jvm> -->
+				</configuration>
+				<version>3.0.0-M5</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+</project>
