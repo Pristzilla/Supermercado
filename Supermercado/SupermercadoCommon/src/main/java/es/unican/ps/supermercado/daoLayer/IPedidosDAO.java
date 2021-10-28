@@ -1,5 +1,16 @@
 package es.unican.ps.supermercado.daoLayer;
 
-public class IPedidosDAO {
+import java.util.List;
 
+import es.unican.ps.supermercado.entities.Pedido;
+
+public interface IPedidosDAO {
+
+	public Pedido crearPedido (Pedido p);
+	public Pedido modificarPedido (Pedido p);
+	public Pedido eliminarPedido (Pedido p);
+	public Pedido buscarPedidoPorID (Long id);
+	public Pedido buscarPedidoPorReferencia (String ref);
+
+	public List<Pedido> Pedidos();
 }

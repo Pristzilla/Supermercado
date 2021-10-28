@@ -1,6 +1,14 @@
 package es.unican.ps.supermercado.daoLayer;
 
-public class IArticulosDAO {
+import java.util.List;
 
-	//public Articulo crearArticulo
+import es.unican.ps.supermercado.entities.Articulo;
+
+public interface IArticulosDAO {
+
+	public Articulo crearArticulo (Articulo a);
+	public Articulo modificarArticulo (Articulo a);
+	public Articulo eliminarArticulo (Articulo a);
+	public Articulo buscarArticuloPorID (Long id);
+	public List<Articulo> articulos();
 }
