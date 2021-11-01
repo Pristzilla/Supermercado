@@ -135,6 +135,15 @@ public class Usuario {
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Usuario) {
+			Usuario u = (Usuario) o;
+			return u.getDni().equals(dni);
+		}
+		return false;
+	}
 	
 	
 
