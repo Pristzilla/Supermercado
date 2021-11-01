@@ -114,6 +114,13 @@ public class Usuario {
 	public void setComprasMensuales(int comprasMensuales) {
 		this.comprasMensuales = comprasMensuales;
 	}
+	
+	/**
+	 * Anhade una nueva compra
+	 */
+	public void addCompraMensual() {
+		this.comprasMensuales++;
+	}
 
 	/**
 	 * @return the pedidos

@@ -5,8 +5,8 @@ import java.util.List;
 public class Supermercado {
 
 	private Long id;
-	private LocalTime horaApertura;
-	private LocalTime horaCierre;
+	private static LocalTime HORA_APERTURA = LocalTime.parse("09:00:00");
+	private static LocalTime HORA_CIERRE = LocalTime.parse("21:00:00");
 	private List<Usuario> usuarios;
 	private List<Articulo> articulosDisponibles;
 	
@@ -17,10 +17,7 @@ public class Supermercado {
 	 * @param usuarios
 	 * @param articulosDisponibles
 	 */
-	public Supermercado(LocalTime horaApertura, LocalTime horaCierre, List<Usuario> usuarios,
-			List<Articulo> articulosDisponibles) {
-		this.horaApertura = horaApertura;
-		this.horaCierre = horaCierre;
+	public Supermercado(List<Usuario> usuarios, List<Articulo> articulosDisponibles) {
 		this.usuarios = usuarios;
 		this.articulosDisponibles = articulosDisponibles;
 	}
@@ -43,28 +40,14 @@ public class Supermercado {
 	 * @return the horaApertura
 	 */
 	public LocalTime getHoraApertura() {
-		return horaApertura;
-	}
-
-	/**
-	 * @param horaApertura the horaApertura to set
-	 */
-	public void setHoraApertura(LocalTime horaApertura) {
-		this.horaApertura = horaApertura;
+		return HORA_APERTURA;
 	}
 
 	/**
 	 * @return the horaCierre
 	 */
 	public LocalTime getHoraCierre() {
-		return horaCierre;
-	}
-
-	/**
-	 * @param horaCierre the horaCierre to set
-	 */
-	public void setHoraCierre(LocalTime horaCierre) {
-		this.horaCierre = horaCierre;
+		return HORA_CIERRE;
 	}
 
 	/**

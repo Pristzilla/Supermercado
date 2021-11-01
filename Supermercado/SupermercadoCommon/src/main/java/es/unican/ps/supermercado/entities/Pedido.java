@@ -18,11 +18,10 @@ public class Pedido {
 		PREPARANDO, ENTREGADO, DISPONIBLE
 	}
 	
-	public Pedido(String ref, Estado estado, LocalDateTime fecha, LocalTime horaRecogida) {
+	public Pedido(String ref, Estado estado, LocalDateTime fecha) {
 		this.ref = ref;
 		this.estado = estado;
 		this.fecha = fecha;
-		this.horaRecogida = horaRecogida;
 	}
 	
 	/**
@@ -108,6 +107,10 @@ public class Pedido {
 	public void setLineasPedido(List<LineaPedido> lineasPedido) {
 		this.lineasPedido = lineasPedido;
 	}
+	
+	public void addLineaPedido(LineaPedido linea) {
+		this.lineasPedido.add(linea);
+	}
 
 	/**
 	 * @return the usuario
@@ -121,6 +124,17 @@ public class Pedido {
 	 */
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	
+	/**
+	 * @return total,precio a pagar por el pedido
+	 */
+	public double getTotalPedido() {
+		double total = 0.0;
+		for (LineaPedido linea : lineasPedido) {
+			total = linea.getArticulo().getPrecio();
+		}
+		return total;
 	}
 	
 }
