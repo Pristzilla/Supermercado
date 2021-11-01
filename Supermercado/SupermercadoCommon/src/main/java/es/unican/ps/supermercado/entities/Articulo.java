@@ -31,14 +31,14 @@ public class Articulo {
 	/**
 	 * @return the nombre
 	 */
-	public static String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
 	/**
 	 * @param nombre the nombre to set
 	 */
-	public static void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		Articulo.nombre = nombre;
 	}
 
@@ -70,5 +70,12 @@ public class Articulo {
 		this.precio = precio;
 	}
 	
-	
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Articulo) {
+			Articulo a = (Articulo) o;
+			return a.getNombre().equals(nombre) && a.getPrecio() == precio;
+		}
+		return false;
+	}
 }
