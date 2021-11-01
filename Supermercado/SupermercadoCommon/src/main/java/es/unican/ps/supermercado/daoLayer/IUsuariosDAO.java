@@ -9,8 +9,7 @@ public interface IUsuariosDAO {
 	public Usuario crearUsuario (Usuario u);
 	public Usuario modificarUsuario (Usuario u);
 	public Usuario eliminarUsuario (Usuario u);
-	public Usuario buscarUsuarioPorID (Long id);
+	public Usuario buscarUsuarioPorId (Long id);
 	public Usuario buscarUsuarioPorDNI (String dni);
-
 	public List<Usuario> Usuarios();
 }

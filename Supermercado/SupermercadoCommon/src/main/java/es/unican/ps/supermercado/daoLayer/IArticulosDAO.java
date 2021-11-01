@@ -9,7 +9,7 @@ public interface IArticulosDAO {
 	public Articulo crearArticulo (Articulo a);
 	public Articulo modificarArticulo (Articulo a);
 	public Articulo eliminarArticulo (Articulo a);
-	public Articulo buscarArticuloPorID (Long id);
 	public List<Articulo> buscarArticuloPorNombre (String nombre);
+	public Articulo buscarArticuloPorId (Long id);
 	public List<Articulo> articulos();
 }
