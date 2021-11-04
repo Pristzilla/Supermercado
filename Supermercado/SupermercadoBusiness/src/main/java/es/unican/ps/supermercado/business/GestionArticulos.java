@@ -1,6 +1,5 @@
 package es.unican.ps.supermercado.business;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -27,20 +26,26 @@ public class GestionArticulos implements IGestionArticulosLocal, IGestionArticul
 
 	@Override
 	public Articulo modificarArticulo(Articulo a) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Articulo> articulos = articulosDAO.articulos();
+		if (!articulos.contains(a))
+			return null;
+		return articulosDAO.modificarArticulo(a);
 	}
 
 	@Override
 	public Articulo eliminarArticulo(Articulo a) {
 		List<Articulo> articulos = articulosDAO.articulos();
-		if (articulos.contains(a)) {
-			return articulosDAO.eliminarArticulo(a);
+		if (!articulos.contains(a)) {
+			return null;
 		}
 		else 
-			return null;
+			return articulosDAO.eliminarArticulo(a);
 	}
 	
+	/**
+	 * Metodo que devuelve los articulos que coinciden con un texto
+	 * @param nombre texto a buscar
+	 */
 	public List<Articulo> articulo(String nombre) {
 		return articulosDAO.buscarArticuloPorNombre(nombre);
 	}
