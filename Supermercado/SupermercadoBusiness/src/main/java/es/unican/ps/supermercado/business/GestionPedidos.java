@@ -1,7 +1,11 @@
 package es.unican.ps.supermercado.business;
 
 import javax.ejb.Stateful;
+
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
+
 import es.unican.ps.supermercado.businessLayer.*;
 import es.unican.ps.supermercado.daoLayer.*;
 import es.unican.ps.supermercado.entities.Articulo;
@@ -16,35 +20,36 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	
 	private IUsuariosDAOLocal usuariosDAO;
 	private IPedidosDAOLocal pedidosDAO;
-	private Supermercado supermercado = new Supermercado(null, null); // TODO se hace asi?
+	private Pedido pedido;
+	private Supermercado supermercado = new Supermercado(); // TODO coger de BBDD
 	
-	public Pedido realizarPedido(Pedido p, String dni) {
+	public Pedido iniciarPedido(String dni) {
 		if (usuariosDAO.buscarUsuarioPorDNI(dni) == null) {
 			return null;
 		}
-		// TODO
-		return p;
+		
+		this.pedido = new Pedido(dni+LocalDateTime.now().toString(), Pedido.Estado.PREPARANDO, LocalDateTime.now());
+		return this.pedido;
 		
 	}
 	
-	public boolean anhadirArticuloACarrito(Pedido p, Articulo a, int uds) {
+	public List<LineaPedido> anhadirArticuloACarrito(Articulo a, int uds) {
 		if (a.getUnidadesStock() < uds) {
-			return false;
+			return null;
 		}
 		// Se anhade el articulo al pedido
 		LineaPedido linea = new LineaPedido(uds, a);
-		p.addLineaPedido(linea);
+		this.pedido.addLineaPedido(linea);
 		// Se actualiza el stock
 		a.setUnidadesStock(a.getUnidadesStock() - uds);
-		// TODO mostrar estado pedido?
-		return true;
+		return this.pedido.getLineasPedido();
 		
 	}
 	
-	public boolean confirmarCarro(Pedido p, LocalTime horaRegogida) {
+	public boolean confirmarCarro(LocalTime horaRegogida) {
 		if (horaRegogida.isAfter(supermercado.getHoraApertura()) 
 				&& horaRegogida.isBefore(supermercado.getHoraCierre())) {
-			p.setHoraRecogida(horaRegogida);
+			this.pedido.setHoraRecogida(horaRegogida);
 			// TODO aplicar descuento usuario?
 			return true;
 		}
@@ -61,6 +66,8 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		u.addCompraMensual();
 		return p;
 	}
+	
+	
 	public Pedido procesarPedido(Pedido p) {
 		// TODO primer pedido pendiente?
 		return null;
