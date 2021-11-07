@@ -42,10 +42,7 @@ public class GestionArticulos implements IGestionArticulosLocal, IGestionArticul
 			return articulosDAO.eliminarArticulo(a);
 	}
 	
-	/**
-	 * Metodo que devuelve los articulos que coinciden con un texto
-	 * @param nombre texto a buscar
-	 */
+	@Override
 	public List<Articulo> articulo(String nombre) {
 		return articulosDAO.buscarArticuloPorNombre(nombre);
 	}

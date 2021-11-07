@@ -1,5 +1,6 @@
 package es.unican.ps.supermercado.business;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
 import java.time.LocalDateTime;
@@ -18,21 +19,28 @@ import es.unican.ps.supermercado.entities.Usuario;
 public class GestionPedidos implements IGestionPedidosLocal, IGestionPedidosRemote,
 IProcesaPedidosLocal, IProcesaPedidosRemote {
 	
+	@EJB
 	private IUsuariosDAOLocal usuariosDAO;
+	@EJB
 	private IPedidosDAOLocal pedidosDAO;
 	private Pedido pedido;
+	private Usuario usuario;
 	private Supermercado supermercado = new Supermercado(); // TODO coger de BBDD
 	
+	@Override
 	public Pedido iniciarPedido(String dni) {
-		if (usuariosDAO.buscarUsuarioPorDNI(dni) == null) {
+		Usuario u = usuariosDAO.buscarUsuarioPorDNI(dni);
+		if (u == null) {
+			this.usuario = null;
 			return null;
 		}
-		
+		this.usuario = u;
 		this.pedido = new Pedido(dni+LocalDateTime.now().toString(), Pedido.Estado.PREPARANDO, LocalDateTime.now());
 		return this.pedido;
 		
 	}
 	
+	@Override
 	public List<LineaPedido> anhadirArticuloACarrito(Articulo a, int uds) {
 		if (a.getUnidadesStock() < uds) {
 			return null;
@@ -46,16 +54,26 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		
 	}
 	
+	@Override
 	public boolean confirmarCarro(LocalTime horaRegogida) {
 		if (horaRegogida.isAfter(supermercado.getHoraApertura()) 
 				&& horaRegogida.isBefore(supermercado.getHoraCierre())) {
 			this.pedido.setHoraRecogida(horaRegogida);
-			// TODO aplicar descuento usuario?
 			return true;
 		}
 		return false;
 		
 	}
+	
+	@Override
+	public Pedido aplicarDescuento() {
+		if (this.usuario.getComprasMensuales() > 10) {
+			this.pedido.aplicarDescuento(10);
+		}
+		return this.pedido;
+	}
+	
+	@Override
 	public Pedido entregaPedido(String ref, String dni) {
 		// TODO revisar
 		Pedido p = pedidosDAO.buscarPedidoPorReferencia(ref);
@@ -67,9 +85,10 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		return p;
 	}
 	
-	
+	@Override
 	public Pedido procesarPedido(Pedido p) {
 		// TODO primer pedido pendiente?
+		p.setEstado(Pedido.Estado.DISPONIBLE);
 		return null;
 		
 	}

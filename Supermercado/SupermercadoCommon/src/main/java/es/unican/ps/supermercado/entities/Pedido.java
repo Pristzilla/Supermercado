@@ -13,6 +13,7 @@ public class Pedido {
 	private LocalTime horaRecogida;
 	private List<LineaPedido> lineasPedido;
 	private Usuario usuario;
+	private int descuento = 0;
 
 	public enum Estado {
 		PREPARANDO, ENTREGADO, DISPONIBLE
@@ -127,14 +128,22 @@ public class Pedido {
 	}
 	
 	/**
-	 * @return total,precio a pagar por el pedido
+	 * Aplica un descuento al pedido
+	 * @param descuento descuento a aplicar
+	 */
+	public void aplicarDescuento(int descuento) {
+		this.descuento = descuento;
+	}
+	
+	/**
+	 * @return total, precio a pagar por el pedido
 	 */
 	public double getTotalPedido() {
 		double total = 0.0;
 		for (LineaPedido linea : lineasPedido) {
 			total = linea.getArticulo().getPrecio();
 		}
-		return total;
+		return total*(100-this.descuento);
 	}
 	
 }

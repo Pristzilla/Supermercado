@@ -1,31 +1,29 @@
-<<<<<<< .merge_file_Z4UE9S
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IArticulosDAOLocal.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Supermercado.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IArticulosDAO.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IArticulosDAORemote.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IUsuariosDAO.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Pedido.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Usuario.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IPedidosDAORemote.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IPedidosDAOLocal.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IUsuariosDAORemote.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/LineaPedido.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IPedidosDAO.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IUsuariosDAOLocal.java
-/Users/barquinj/eclipse-workspace/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Articulo.java
-=======
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Supermercado.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IUsuariosDAO.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IPedidosDAORemote.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Pedido.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IPedidosDAOLocal.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IUsuariosDAOLocal.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/LineaPedido.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IArticulosDAO.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IUsuariosDAORemote.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IPedidosDAO.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Usuario.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/entities/Articulo.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IArticulosDAOLocal.java
-/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoCommon/src/main/java/es/unican/ps/supermercado/daoLayer/IArticulosDAORemote.java
->>>>>>> .merge_file_wITcEN
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionPedidosRemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionPedidos.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IUsuariosDAOLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionArticulosLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IPedidosDAO.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\entities\LineaPedido.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\entities\Articulo.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IPedidosDAOLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionArticulos.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IProcesaPedidosRemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IConsultaArticulosLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IPedidosDAORemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionPedidosLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionUsuariosLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IConsultaArticulos.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IArticulosDAOLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionUsuariosRemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IUsuariosDAORemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IArticulosDAO.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IConsultaArticulosRemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\entities\Pedido.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IArticulosDAORemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionUsuarios.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\entities\Usuario.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IProcesaPedidosLocal.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\daoLayer\IUsuariosDAO.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IGestionArticulosRemote.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\businessLayer\IProcesaPedidos.java
+C:\Users\Sara\Desktop\Uni\Procesos sw\Prácticas\Práctica 3\Supermercado\Supermercado\SupermercadoCommon\src\main\java\es\unican\ps\supermercado\entities\Supermercado.java
