@@ -2,6 +2,8 @@ package es.unican.ps.supermercado.entities;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.List;
 
 public class Pedido {
@@ -16,13 +18,11 @@ public class Pedido {
 	private int descuento = 0;
 
 	public enum Estado {
-		PREPARANDO, ENTREGADO, DISPONIBLE
+		NO_CONFIRMADO, PENDIENTE, PROCESADO, ENTREGADO
 	}
 	
-	public Pedido(String ref, Estado estado, LocalDateTime fecha) {
-		this.ref = ref;
+	public Pedido(Estado estado) {
 		this.estado = estado;
-		this.fecha = fecha;
 	}
 	
 	/**
@@ -144,6 +144,10 @@ public class Pedido {
 			total = linea.getArticulo().getPrecio();
 		}
 		return total*(100-this.descuento);
+	}
+	
+	public String getHoraRecogidaString() {
+		return horaRecogida.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
 	}
 	
 }
