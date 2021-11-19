@@ -1,9 +1,21 @@
 package es.unican.ps.supermercado.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Articulos")
 public class Articulo {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private static String nombre;
+	@Column(name="stock")
 	private int unidadesStock;
 	private double precio;
 	
