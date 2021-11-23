@@ -20,6 +20,9 @@ import es.unican.ps.supermercado.entities.Usuario;
 public class GestionPedidos implements IGestionPedidosLocal, IGestionPedidosRemote,
 IProcesaPedidosLocal, IProcesaPedidosRemote {
 
+	private static final int NUM_COMPRAS_MENSUALES = 10;
+	private static final int VALOR_DESCUENTO = 5;
+
 	@EJB
 	private IUsuariosDAOLocal usuariosDAO;
 	@EJB
@@ -74,12 +77,12 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 * @return Pedido el pedido almacenado
 	 *  @return null si no se ha podido almacenar el pedido
 	 */
-	public Pedido almacenaPedido(Pedido p) {
-		String refPedido = p.getUsuario().getDni() + LocalDateTime.now().toString();
-		p.setRef(refPedido);
-		p.setEstado(Pedido.Estado.PENDIENTE);
-		if(this.supermercado.anhadePedidoPendiente(p)) {
-			return p;
+	public Pedido almacenaPedido() {
+		String refPedido = this.pedido.getUsuario().getDni() + LocalDateTime.now().toString();
+		this.pedido.setRef(refPedido);
+		this.pedido.setEstado(Pedido.Estado.PENDIENTE);
+		if(pedidosDAO.anhadePedidoPendiente(this.pedido)) {
+			return this.pedido;
 		} else {
 			return null;
 		}
@@ -91,8 +94,8 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 */
 	@Override
 	public Pedido aplicarDescuento() {
-		if (this.usuario.getComprasMensuales() > 10) {
-			this.pedido.aplicarDescuento(5);
+		if (this.usuario.getComprasMensuales() > NUM_COMPRAS_MENSUALES) {
+			this.pedido.aplicarDescuento(VALOR_DESCUENTO);
 		}
 		return this.pedido;
 	}
@@ -116,7 +119,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 */
 	@Override
 	public Pedido procesarPedido() {
-		Pedido p = supermercado.procesaPedidoPendiente();
+		Pedido p = pedidosDAO.procesarPendiente();
 		if(p != null) {
 			p.setEstado(Pedido.Estado.PROCESADO);
 			return p;	

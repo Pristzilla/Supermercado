@@ -8,7 +8,6 @@ public class Supermercado {
 	private Long id;
 	private static LocalTime HORA_APERTURA = LocalTime.parse("09:00:00");
 	private static LocalTime HORA_CIERRE = LocalTime.parse("21:00:00");	
-	private Queue <Pedido> pedidosPendientes; // Cola con los pedidos pendientes
 	
 	/**
 	 * Crea un supermercado
@@ -18,7 +17,6 @@ public class Supermercado {
 	 * @param articulosDisponibles
 	 */
 	public Supermercado() {
-		this.pedidosPendientes = new LinkedList<Pedido>();
 	}
 
 	/**
@@ -47,28 +45,6 @@ public class Supermercado {
 	 */
 	public LocalTime getHoraCierre() {
 		return HORA_CIERRE;
-	}	
-	
-	/**
-	 * Añade un pedido a la lista de pedidos pendientes del supermercado
-	 * @param pedido el pedido a añadir.
-	 * @return true si el pedido se ha añadido correctamente.
-	 * 			false si no se ha podido añadir.
-	 */
-	public boolean anhadePedidoPendiente(Pedido pedido) {
-		return pedidosPendientes.add(pedido);
-	}
-	
-	/**
-	 * Retorna un pedido pendiente para que el dependiente procese el pedido
-	 * @return Pedido un pedido que este pendiente.
-	 * 			null si no hay ningun pedido pendiente.
-	 */
-	public Pedido procesaPedidoPendiente() {
-		return this.pedidosPendientes.poll();
-	}
-	
-	
-	
+	}		
 	
 }
