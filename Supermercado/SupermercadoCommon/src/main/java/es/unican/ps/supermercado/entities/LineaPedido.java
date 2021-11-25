@@ -1,9 +1,20 @@
 package es.unican.ps.supermercado.entities;
 
-public class LineaPedido {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
-	private int cantidad;
+@Entity
+public class LineaPedido {
+	@Id
+	@GeneratedValue
 	private Long id;
+	
+	private int cantidad;
+	
+	
+	@JoinColumn(name="articulo_fk")
 	private Articulo articulo;
 	
 	

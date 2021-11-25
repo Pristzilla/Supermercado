@@ -1,9 +1,15 @@
 package es.unican.ps.supermercado.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Usuario {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Usuario implements Serializable {
+	
+	@Id
 	private Long id;
 	private String nombre;
 	private String dni;

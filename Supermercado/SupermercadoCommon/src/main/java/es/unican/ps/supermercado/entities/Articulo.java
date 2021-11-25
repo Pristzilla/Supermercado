@@ -1,7 +1,13 @@
 package es.unican.ps.supermercado.entities;
 
-public class Articulo {
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Articulo implements Serializable {
+
+	@Id
 	private Long id;
 	private static String nombre;
 	private int unidadesStock;

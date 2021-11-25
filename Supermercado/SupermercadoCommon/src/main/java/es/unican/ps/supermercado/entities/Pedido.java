@@ -5,15 +5,24 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.List;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
-public class Pedido {
+@Entity
+public class Pedido implements Serializable {
 	
+	@Id
 	private String ref;
 	private Long id;
 	private Estado estado;
 	private LocalDateTime fecha;
 	private LocalTime horaRecogida;
+	
 	private List<LineaPedido> lineasPedido;
+	
+	@JoinColumn(name="usuario_fk")
 	private Usuario usuario;
 	private int descuento = 0;
 
