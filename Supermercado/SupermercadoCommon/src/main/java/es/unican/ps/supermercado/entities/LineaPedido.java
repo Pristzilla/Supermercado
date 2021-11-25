@@ -2,19 +2,23 @@ package es.unican.ps.supermercado.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Linea_pedido")
 public class LineaPedido {
-	@Id
-	@GeneratedValue
-	private Long id;
-	
+
 	private int cantidad;
-	
-	
-	@JoinColumn(name="articulo_fk")
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	@ManyToOne
+	@JoinColumn(name="Articulo_FK") // Se usa para cambiar de nombre la relacion
+
 	private Articulo articulo;
 	
 	

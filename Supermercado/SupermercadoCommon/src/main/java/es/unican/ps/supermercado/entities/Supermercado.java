@@ -1,8 +1,6 @@
 package es.unican.ps.supermercado.entities;
 
 import java.time.LocalTime;
-import java.util.LinkedList;
-import java.util.Queue;
 public class Supermercado {
 
 	private Long id;
@@ -45,6 +43,7 @@ public class Supermercado {
 	 */
 	public LocalTime getHoraCierre() {
 		return HORA_CIERRE;
-	}		
+	}	
+	
 	
 }

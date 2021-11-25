@@ -9,21 +9,39 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
+@Table(name="Pedidos")
 public class Pedido implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
-	private String ref;
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	private String ref;
 	private Estado estado;
 	private LocalDateTime fecha;
+	@Column(name="hora_recogida")
 	private LocalTime horaRecogida;
-	
+
+	@OneToMany
+	@JoinColumn(name="Pedido_FK")
 	private List<LineaPedido> lineasPedido;
-	
-	@JoinColumn(name="usuario_fk")
+	@ManyToOne
+	@JoinColumn(name="Usuario_FK")
 	private Usuario usuario;
+	@Transient
 	private int descuento = 0;
 
 	public enum Estado {

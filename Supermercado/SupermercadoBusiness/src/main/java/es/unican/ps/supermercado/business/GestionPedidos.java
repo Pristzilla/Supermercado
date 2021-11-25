@@ -5,7 +5,6 @@ import javax.ejb.Stateful;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.LinkedList;
 import java.util.List;
 
 import es.unican.ps.supermercado.businessLayer.*;
@@ -40,7 +39,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		}
 		this.usuario = u;
 		this.pedido = new Pedido(Pedido.Estado.NO_CONFIRMADO);
-		pedido.setUsuario(u);
+		this.pedido.setUsuario(u);
 		return this.pedido;
 
 	}
@@ -64,7 +63,6 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		if (horaRegogida.isAfter(supermercado.getHoraApertura()) 
 				&& horaRegogida.isBefore(supermercado.getHoraCierre())) {
 			this.pedido.setHoraRecogida(horaRegogida);
-			this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
 			return true;
 		}
 		return false;
@@ -81,11 +79,10 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		String refPedido = this.pedido.getUsuario().getDni() + LocalDateTime.now().toString();
 		this.pedido.setRef(refPedido);
 		this.pedido.setEstado(Pedido.Estado.PENDIENTE);
-		if(pedidosDAO.anhadePedidoPendiente(this.pedido)) {
-			return this.pedido;
-		} else {
-			return null;
-		}
+		this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
+		this.pedido = pedidosDAO.crearPedido(this.pedido);
+		return this.pedido;
+
 	}
 
 	/**
@@ -102,13 +99,15 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 
 	@Override
 	public Pedido entregaPedido(String ref, String dni) {
-		
+
 		Pedido p = pedidosDAO.buscarPedidoPorReferencia(ref);
 		Usuario u = usuariosDAO.buscarUsuarioPorDNI(dni);
-		if (p == null || u == null || !(p.getUsuario().equals(u)) ) 
+		if (p == null || u == null || !(p.getUsuario().equals(u))) 
 			return null;
 		p.setEstado(Pedido.Estado.ENTREGADO);
 		u.addCompraMensual();
+		usuariosDAO.modificarUsuario(u);
+		this.pedido = p;
 		return p;
 	}
 
@@ -119,7 +118,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 */
 	@Override
 	public Pedido procesarPedido() {
-		Pedido p = pedidosDAO.procesarPendiente();
+		Pedido p = pedidosDAO.buscarPrimerPedidoPendiente();
 		if(p != null) {
 			p.setEstado(Pedido.Estado.PROCESADO);
 			return p;	
