@@ -11,5 +11,5 @@ public interface IUsuariosDAO {
 	public Usuario eliminarUsuario (Usuario u);
 	public Usuario buscarUsuarioPorId (Long id);
 	public Usuario buscarUsuarioPorDNI (String dni);
-	public List<Usuario> Usuarios();
+	public List<Usuario> usuarios();
 }

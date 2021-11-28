@@ -51,7 +51,7 @@ public class UsuariosDAO implements IUsuariosDAOLocal, IUsuariosDAORemote {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Usuario> Usuarios() {
+	public List<Usuario> usuarios() {
 		Query q = em.createQuery("SELECT u FROM Usuario u");
 	    return (List<Usuario>) q.getResultList();
 	}
