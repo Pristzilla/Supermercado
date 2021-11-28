@@ -12,6 +12,6 @@ public interface IGestionPedidos {
 	public Pedido iniciarPedido(String dni);
 	public List<LineaPedido> anhadirArticuloACarrito( Articulo a, int uds);
 	public boolean confirmarCarro(LocalTime horaRegogida);
-	public Pedido aplicarDescuento();
+	public Pedido almacenaPedido();
 
 }

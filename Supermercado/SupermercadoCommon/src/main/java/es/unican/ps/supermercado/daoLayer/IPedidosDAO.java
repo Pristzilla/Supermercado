@@ -13,5 +13,5 @@ public interface IPedidosDAO {
 	public Pedido buscarPedidoPorReferencia (String ref);
 	boolean anhadePedidoPendiente(Pedido p);
 	Pedido procesarPendiente();
-	public List<Pedido> Pedidos();
+	public List<Pedido> pedidos();
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+version="2.0">
+	<persistence-unit name="supermercadoPU" transaction-type="JTA">
+		<!-- Datos de acceso a la BBDD -->
+		<jta-data-source>jdbc/supermercado</jta-data-source>
+		<!-- Sólo si las clases no están anotadas -->
+		<class>es.unican.ps.supermercado.entities.Supermercado</class>
+		<class>es.unican.ps.supermercado.entities.Usuario</class>
+		<class>es.unican.ps.supermercado.entities.Pedido</class>
+		<class>es.unican.ps.supermercado.entities.Articulo</class>
+		<class>es.unican.ps.supermercado.entities.LineaPedido</class>
+		<!-- Asignación de propiedades propias del proveedor de persistencia -->
+		<properties>
+		<!-- Standard and Provider-specific config may go here -->
+		<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+		</properties>
+	</persistence-unit>
+</persistence>

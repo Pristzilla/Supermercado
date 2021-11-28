@@ -26,6 +26,8 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	private IUsuariosDAOLocal usuariosDAO;
 	@EJB
 	private IPedidosDAOLocal pedidosDAO;
+	@EJB
+	private IArticulosDAOLocal articulosDAO;
 	private Pedido pedido;
 	private Usuario usuario;
 	private Supermercado supermercado = new Supermercado(); // TODO coger de BBDD
@@ -41,7 +43,6 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		this.pedido = new Pedido(Pedido.Estado.NO_CONFIRMADO);
 		pedido.setUsuario(u);
 		return this.pedido;
-
 	}
 
 	@Override
@@ -49,13 +50,14 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		if (a.getUnidadesStock() < uds) {
 			return null;
 		}
-		// Se anhade el articulo al pedido
-		LineaPedido linea = new LineaPedido(uds, a);
-		this.pedido.addLineaPedido(linea);
-		// Se actualiza el stock
-		a.setUnidadesStock(a.getUnidadesStock() - uds);
+		if (uds > 0) {
+			// Se anhade el articulo al pedido
+			LineaPedido linea = new LineaPedido(uds, a);
+			this.pedido.addLineaPedido(linea);
+			// Se actualiza el stock
+			a.setUnidadesStock(a.getUnidadesStock() - uds);	
+		}
 		return this.pedido.getLineasPedido();
-
 	}
 
 	@Override
@@ -76,23 +78,23 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 * @return Pedido el pedido almacenado
 	 *  @return null si no se ha podido almacenar el pedido
 	 */
+	@Override
 	public Pedido almacenaPedido() {
 		String refPedido = this.pedido.getUsuario().getDni() + LocalDateTime.now().toString();
 		this.pedido.setRef(refPedido);
 		this.pedido.setEstado(Pedido.Estado.PENDIENTE);
-		if(pedidosDAO.anhadePedidoPendiente(this.pedido)) {
-			return this.pedido;
-		} else {
+		this.pedido = aplicarDescuento();		
+		if(!pedidosDAO.anhadePedidoPendiente(this.pedido)) {
 			return null;
 		}
+		return this.pedido;
 	}
 
 	/**
-	 * Metodo que aplica el descuento a un usuario si éste lleva mas de 
+	 * Metodo que aplica el descuento a un usuario si este lleva mas de 
 	 * 10 compras realizadas el mismo mes.
 	 */
-	@Override
-	public Pedido aplicarDescuento() {
+	private Pedido aplicarDescuento() {
 		if (this.usuario.getComprasMensuales() > NUM_COMPRAS_MENSUALES) {
 			this.pedido.aplicarDescuento(VALOR_DESCUENTO);
 		}
