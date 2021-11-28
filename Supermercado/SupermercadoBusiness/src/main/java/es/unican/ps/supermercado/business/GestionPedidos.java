@@ -1,6 +1,9 @@
 package es.unican.ps.supermercado.business;
 
+
+import javax.annotation.Resource;
 import javax.ejb.EJB;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 
 import java.time.LocalDateTime;
@@ -29,6 +32,9 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	@EJB
 	private IArticulosDAOLocal articulosDAO;
 
+	@Resource 
+	private SessionContext context;
+	
 	private Pedido pedido;
 	private Usuario usuario;
 	private Supermercado supermercado = new Supermercado(); // TODO coger de BBDD
