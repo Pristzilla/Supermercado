@@ -18,6 +18,7 @@ public class LineaPedido {
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name="Articulo_FK") // Se usa para cambiar de nombre la relacion
+
 	private Articulo articulo;
 	
 	

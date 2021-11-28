@@ -5,13 +5,13 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.List;
-
-import javax.persistence.Column;
+import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,16 +19,22 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="Pedidos")
-public class Pedido {
+public class Pedido implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
-	private String ref;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	private String ref;
 	private Estado estado;
 	private LocalDateTime fecha;
 	@Column(name="hora_recogida")
 	private LocalTime horaRecogida;
+
 	@OneToMany
 	@JoinColumn(name="Pedido_FK")
 	private List<LineaPedido> lineasPedido;

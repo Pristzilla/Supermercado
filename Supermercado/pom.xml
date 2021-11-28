@@ -18,6 +18,7 @@
 		<module>SupermercadoEAR</module>
 
 		<module>SupermercadoCompletoEAR</module>
+		<module>SupermercadoDAO</module>
 	</modules>
 	<properties>
 		<maven.compiler.source>8</maven.compiler.source>

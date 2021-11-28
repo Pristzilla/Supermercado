@@ -1,5 +1,6 @@
 package es.unican.ps.supermercado.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,8 +13,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Usuarios")
-public class Usuario {
+public class Usuario implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
