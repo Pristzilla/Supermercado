@@ -26,6 +26,9 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	private IUsuariosDAOLocal usuariosDAO;
 	@EJB
 	private IPedidosDAOLocal pedidosDAO;
+	@EJB
+	private IArticulosDAOLocal articulosDAO;
+
 	private Pedido pedido;
 	private Usuario usuario;
 	private Supermercado supermercado = new Supermercado(); // TODO coger de BBDD
@@ -46,14 +49,13 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 
 	@Override
 	public List<LineaPedido> anhadirArticuloACarrito(Articulo a, int uds) {
-		if (a.getUnidadesStock() < uds) {
+		if (a == null || a.getUnidadesStock() < uds) {
 			return null;
 		}
 		// Se anhade el articulo al pedido
 		LineaPedido linea = new LineaPedido(uds, a);
 		this.pedido.addLineaPedido(linea);
-		// Se actualiza el stock
-		a.setUnidadesStock(a.getUnidadesStock() - uds);
+		// Se actualiza el stock al confirmar el pedido
 		return this.pedido.getLineasPedido();
 
 	}
@@ -63,6 +65,12 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		if (horaRegogida.isAfter(supermercado.getHoraApertura()) 
 				&& horaRegogida.isBefore(supermercado.getHoraCierre())) {
 			this.pedido.setHoraRecogida(horaRegogida);
+			Articulo art;
+			for (LineaPedido linea: this.pedido.getLineasPedido()) {
+				art = linea.getArticulo();
+				art.setUnidadesStock(art.getUnidadesStock() - linea.getCantidad());
+				articulosDAO.modificarArticulo(art);
+			}
 			return true;
 		}
 		return false;
@@ -80,6 +88,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		this.pedido.setRef(refPedido);
 		this.pedido.setEstado(Pedido.Estado.PENDIENTE);
 		this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
+
 		this.pedido = pedidosDAO.crearPedido(this.pedido);
 		return this.pedido;
 
@@ -91,10 +100,13 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 */
 	@Override
 	public Pedido aplicarDescuento() {
+		Pedido p = null;
 		if (this.usuario.getComprasMensuales() > NUM_COMPRAS_MENSUALES) {
 			this.pedido.aplicarDescuento(VALOR_DESCUENTO);
+			p = pedidosDAO.modificarPedido(this.pedido);
+
 		}
-		return this.pedido;
+		return p;
 	}
 
 	@Override
