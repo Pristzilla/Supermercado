@@ -15,7 +15,7 @@ public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 
 	@PersistenceContext(unitName="supermercadoPU")
 	private EntityManager em;
-
+	
 	@Override
 	public Pedido crearPedido(Pedido p) {
 		try  {
