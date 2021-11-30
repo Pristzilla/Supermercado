@@ -10,7 +10,7 @@ import es.unican.ps.supermercado.entities.Pedido;
 public interface IGestionPedidos {
 	
 	public Pedido iniciarPedido(String dni);
-	public List<LineaPedido> anhadirArticuloACarrito( Articulo a, int uds);
+	public List<LineaPedido> anhadirArticuloACarrito( Long idArt, int uds);
 	public boolean confirmarCarro(LocalTime horaRegogida);
 	public Pedido almacenaPedido();
 

@@ -53,7 +53,8 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	}
 
 	@Override
-	public List<LineaPedido> anhadirArticuloACarrito(Articulo a, int uds) {
+	public List<LineaPedido> anhadirArticuloACarrito(Long idArt, int uds) {
+		Articulo a = articulosDAO.buscarArticuloPorId(idArt);
 		if (a == null || a.getUnidadesStock() < uds) {
 			return null;
 		}
