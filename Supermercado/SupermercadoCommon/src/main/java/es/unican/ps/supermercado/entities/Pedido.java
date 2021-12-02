@@ -7,6 +7,8 @@ import java.time.format.FormatStyle;
 import java.util.List;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Column;
@@ -30,6 +32,7 @@ public class Pedido implements Serializable {
 	private Long id;
 	
 	private String ref;
+	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	private LocalDateTime fecha;
 	@Column(name="hora_recogida")
@@ -43,6 +46,7 @@ public class Pedido implements Serializable {
 	private Usuario usuario;
 	@Transient
 	private int descuento = 0;
+	private double precioTotal = 0.00;
 
 	public enum Estado {
 		NO_CONFIRMADO, PENDIENTE, PROCESADO, ENTREGADO
@@ -163,16 +167,33 @@ public class Pedido implements Serializable {
 	}
 	
 	/**
-	 * @return total, precio a pagar por el pedido
+	 * calcula el precio total del pedido
 	 */
-	public double getTotalPedido() {
-		double total = 0.0;
+	public void calculaTotalPedido() {
+		double subtotal = 0.0;
 		for (LineaPedido linea : lineasPedido) {
-			total = linea.getArticulo().getPrecio();
+			subtotal = linea.getArticulo().getPrecio();
 		}
-		return total*(100-this.descuento);
+		this.precioTotal = subtotal*(100-this.descuento);
 	}
 	
+	/**
+	 * @return precioTotal
+	 */
+	public double getPrecioTotal() {
+		return this.precioTotal;
+	}
+	
+	/**
+	 * 
+	 * @param precioTotal, precioTotal to set
+	 */
+	public void setPrecioTotal(double precioTotal) {
+		this.precioTotal = precioTotal;
+	}
+	/**
+	 * @return String, la hora de recogida en string
+	 */
 	public String getHoraRecogidaString() {
 		return horaRecogida.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
 	}
