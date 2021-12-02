@@ -34,8 +34,12 @@ public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 
 	@Override
 	public Pedido eliminarPedido(Pedido p) {
-		em.remove(p);
-		return p;
+		Pedido ped = em.find(Pedido.class, p.getId());
+		if (ped == null) {
+			return null;
+		}
+		em.remove(ped);
+		return ped;
 	}
 
 	@Override

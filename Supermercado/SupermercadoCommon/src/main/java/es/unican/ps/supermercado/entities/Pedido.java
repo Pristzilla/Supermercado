@@ -7,6 +7,8 @@ import java.time.format.FormatStyle;
 import java.util.List;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Column;
@@ -30,6 +32,7 @@ public class Pedido implements Serializable {
 	private Long id;
 	
 	private String ref;
+	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	private LocalDateTime fecha;
 	@Column(name="hora_recogida")

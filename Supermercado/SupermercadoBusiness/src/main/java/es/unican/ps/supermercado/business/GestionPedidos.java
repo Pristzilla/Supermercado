@@ -68,7 +68,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	}
 
 	@Override
-	public boolean confirmarCarro(LocalTime horaRegogida) {
+	public Pedido confirmarCarro(LocalTime horaRegogida) {
 		if (horaRegogida.isAfter(supermercado.getHoraApertura()) 
 				&& horaRegogida.isBefore(supermercado.getHoraCierre())) {
 			this.pedido.setHoraRecogida(horaRegogida);
@@ -78,29 +78,16 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 				art.setUnidadesStock(art.getUnidadesStock() - linea.getCantidad());
 				articulosDAO.modificarArticulo(art);
 			}
-			return true;
+			String refPedido = this.pedido.getUsuario().getDni() + LocalDateTime.now().toString();
+			this.pedido.setRef(refPedido);
+			this.pedido.setEstado(Pedido.Estado.PENDIENTE);
+			this.pedido.aplicarDescuento(this.calculaDescuento()); 
+			this.pedido.calculaTotalPedido();
+			this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
+			this.pedido = pedidosDAO.crearPedido(this.pedido);		
+			return this.pedido;
 		}
-		return false;
-
-	}
-
-	/**
-	 * Metodo que almacena el pedido cuando se confirma el carro
-	 * @param p pedido a almacenar
-	 * @return Pedido el pedido almacenado
-	 *  @return null si no se ha podido almacenar el pedido
-	 */
-	@Override
-	public Pedido almacenaPedido() {
-		String refPedido = this.pedido.getUsuario().getDni() + LocalDateTime.now().toString();
-		this.pedido.setRef(refPedido);
-		this.pedido.setEstado(Pedido.Estado.PENDIENTE);
-		this.pedido.aplicarDescuento(this.calculaDescuento()); 
-		this.pedido.calculaTotalPedido();
-		this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
-		this.pedido = pedidosDAO.crearPedido(this.pedido);		
-		return this.pedido;
-
+		return null;
 	}
 
 	/**
