@@ -95,7 +95,8 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		String refPedido = this.pedido.getUsuario().getDni() + LocalDateTime.now().toString();
 		this.pedido.setRef(refPedido);
 		this.pedido.setEstado(Pedido.Estado.PENDIENTE);
-		this.pedido = aplicarDescuento();
+		this.pedido.aplicarDescuento(this.calculaDescuento()); 
+		this.pedido.calculaTotalPedido();
 		this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
 		this.pedido = pedidosDAO.crearPedido(this.pedido);		
 		return this.pedido;
@@ -106,15 +107,13 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 * Metodo que aplica el descuento a un usuario si este lleva mas de 
 	 * 10 compras realizadas el mismo mes.
 	 */
-
-	private Pedido aplicarDescuento() {
-		Pedido p = null;
+	
+	private int calculaDescuento() { 
+		int descuento = 0;
 		if (this.usuario.getComprasMensuales() > NUM_COMPRAS_MENSUALES) {
-			this.pedido.aplicarDescuento(VALOR_DESCUENTO);
-			p = pedidosDAO.modificarPedido(this.pedido);
-
+			descuento = VALOR_DESCUENTO;
 		}
-		return p;
+		return descuento;
 	}
 
 	@Override
