@@ -26,7 +26,7 @@ public class Articulo implements Serializable {
 	private int unidadesStock;
 	private double precio;
 	
-
+	public Articulo() {}
 	public Articulo(int unidadesStock, double precio) {
 		this.unidadesStock = unidadesStock;
 		this.precio = precio;
