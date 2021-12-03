@@ -5,9 +5,11 @@ import java.util.List;
 import javax.ejb.Stateful;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import es.unican.ps.supermercado.entities.Articulo;
 import es.unican.ps.supermercado.entities.Pedido;
 
 @Stateful
@@ -45,13 +47,23 @@ public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 	@Override
 	public Pedido buscarPedidoPorId(Long id) {
 		Query q = em.createQuery("SELECT p FROM Pedido p WHERE p.id = :id");
-	    return (Pedido) q.getResultList();
+		q.setParameter("id", id);
+		try {
+			return (Pedido) q.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	@Override
 	public Pedido buscarPedidoPorReferencia(String ref) {
 		Query q = em.createQuery("SELECT p FROM Pedido p WHERE p.ref = :ref");
-	    return (Pedido) q.getResultList();
+		q.setParameter("ref", ref);
+		try {
+			return (Pedido) q.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 
