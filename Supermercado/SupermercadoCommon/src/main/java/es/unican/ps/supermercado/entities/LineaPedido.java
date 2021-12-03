@@ -21,6 +21,16 @@ public class LineaPedido {
 
 	private Articulo articulo;
 	
+	public LineaPedido() {}
+	/**
+	 * @param cantidad
+	 * @param articulo
+	 */
+	public LineaPedido(int cantidad, Articulo articulo) {
+		super();
+		this.cantidad = cantidad;
+		this.articulo = articulo;
+	}
 	
 	/**
 	 * @return the cantidad
@@ -70,13 +80,5 @@ public class LineaPedido {
 	}
 
 
-	/**
-	 * @param cantidad
-	 * @param articulo
-	 */
-	public LineaPedido(int cantidad, Articulo articulo) {
-		super();
-		this.cantidad = cantidad;
-		this.articulo = articulo;
-	}
+	
 }

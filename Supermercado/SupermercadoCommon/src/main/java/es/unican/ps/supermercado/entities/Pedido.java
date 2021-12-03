@@ -52,6 +52,11 @@ public class Pedido implements Serializable {
 		NO_CONFIRMADO, PENDIENTE, PROCESADO, ENTREGADO
 	}
 	
+	public Pedido() {}
+	/**
+	 * Constructor para crear un pedido.
+	 * @param estado
+	 */
 	public Pedido(Estado estado) {
 		this.estado = estado;
 	}
