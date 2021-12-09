@@ -48,6 +48,7 @@ public class GestionTimer {
 		for (Usuario u: usuarios) {
 			u.setComprasMensuales(0);
 			usuariosDAO.modificarUsuario(u);
+			
 		}
 	}
 

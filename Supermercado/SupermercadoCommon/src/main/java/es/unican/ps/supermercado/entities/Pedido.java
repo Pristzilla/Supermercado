@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.LinkedList;
 import java.util.List;
 import java.io.Serializable;
 import javax.persistence.Entity;
@@ -52,8 +53,14 @@ public class Pedido implements Serializable {
 		NO_CONFIRMADO, PENDIENTE, PROCESADO, ENTREGADO
 	}
 	
+	public Pedido() {}
+	/**
+	 * Constructor para crear un pedido.
+	 * @param estado
+	 */
 	public Pedido(Estado estado) {
 		this.estado = estado;
+		this.lineasPedido = new LinkedList<>();
 	}
 	
 	/**
@@ -142,6 +149,7 @@ public class Pedido implements Serializable {
 	
 	public void addLineaPedido(LineaPedido linea) {
 		this.lineasPedido.add(linea);
+		
 	}
 
 	/**

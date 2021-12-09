@@ -2,12 +2,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>es.unican.ps</groupId>
 		<artifactId>Supermercado</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>SupermercadoDAO</artifactId>
+
+	<artifactId>SupermercadoWeb</artifactId>
+
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
@@ -15,23 +19,21 @@
 			<artifactId>SupermercadoCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-<<<<<<< HEAD
-
-=======
-		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>3.0.0</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
->>>>>>> 79c9aa8cdb984ab7665385eff3cece354b2d339a
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
+
+	<build>
+		<finalName>SupermercadoWeb</finalName>
+		<plugins>
+			<!-- Plugin para archivos war, puede ser util para algunos aspectos de 
+				configuración -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

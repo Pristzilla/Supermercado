@@ -1,5 +1,7 @@
 package es.unican.ps.supermercado.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +12,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Linea_pedido")
-public class LineaPedido {
+public class LineaPedido implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int cantidad;
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -21,6 +28,16 @@ public class LineaPedido {
 
 	private Articulo articulo;
 	
+	public LineaPedido() {}
+	/**
+	 * @param cantidad
+	 * @param articulo
+	 */
+	public LineaPedido(int cantidad, Articulo articulo) {
+		super();
+		this.cantidad = cantidad;
+		this.articulo = articulo;
+	}
 	
 	/**
 	 * @return the cantidad
@@ -70,13 +87,5 @@ public class LineaPedido {
 	}
 
 
-	/**
-	 * @param cantidad
-	 * @param articulo
-	 */
-	public LineaPedido(int cantidad, Articulo articulo) {
-		super();
-		this.cantidad = cantidad;
-		this.articulo = articulo;
-	}
+	
 }

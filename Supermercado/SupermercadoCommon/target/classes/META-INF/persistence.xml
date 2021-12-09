@@ -8,7 +8,6 @@ version="2.0">
 		<!-- Datos de acceso a la BBDD -->
 		<jta-data-source>jdbc/supermercado</jta-data-source>
 		<!-- Sólo si las clases no están anotadas -->
-		<class>es.unican.ps.supermercado.entities.Supermercado</class>
 		<class>es.unican.ps.supermercado.entities.Usuario</class>
 		<class>es.unican.ps.supermercado.entities.Pedido</class>
 		<class>es.unican.ps.supermercado.entities.Articulo</class>

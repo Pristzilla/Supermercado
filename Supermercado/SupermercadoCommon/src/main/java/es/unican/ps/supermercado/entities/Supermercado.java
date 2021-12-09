@@ -14,8 +14,7 @@ public class Supermercado {
 	 * @param usuarios
 	 * @param articulosDisponibles
 	 */
-	public Supermercado() {
-	}
+	public Supermercado() { /* Constructor vacio, se coje de BBDD solo para ver la hora */ }
 
 	/**
 	 * @return the id

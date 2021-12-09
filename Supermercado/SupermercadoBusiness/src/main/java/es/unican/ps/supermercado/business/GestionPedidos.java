@@ -30,14 +30,14 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	@EJB
 	private IPedidosDAOLocal pedidosDAO;
 	@EJB
-	private IArticulosDAOLocal articulosDAO;
+	private IArticulosDAO articulosDAO;
 
 	@Resource 
 	private SessionContext context;
 	
 	private Pedido pedido;
 	private Usuario usuario;
-	private Supermercado supermercado = new Supermercado(); // TODO coger de BBDD
+	private Supermercado supermercado = new Supermercado(); 
 
 	@Override
 	public Pedido iniciarPedido(String dni) {
@@ -47,13 +47,16 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 			return null;
 		}
 		this.usuario = u;
-		this.pedido = new Pedido(Pedido.Estado.NO_CONFIRMADO);
+		this.setPedido(new Pedido(Pedido.Estado.NO_CONFIRMADO));
 		this.pedido.setUsuario(u);
 		return this.pedido;
 	}
 
 	@Override
 	public List<LineaPedido> anhadirArticuloACarrito(Long idArt, int uds) {
+		if (idArt == null) {
+			return null;
+		}
 		Articulo a = articulosDAO.buscarArticuloPorId(idArt);
 		if (a == null || a.getUnidadesStock() < uds) {
 			return null;
@@ -64,6 +67,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 			this.pedido.addLineaPedido(linea);
 			
 		}
+		
 		return this.pedido.getLineasPedido();
 	}
 
@@ -84,7 +88,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 			this.pedido.aplicarDescuento(this.calculaDescuento()); 
 			this.pedido.calculaTotalPedido();
 			this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
-			this.pedido = pedidosDAO.crearPedido(this.pedido);		
+			this.setPedido(pedidosDAO.crearPedido(this.pedido));		
 			return this.pedido;
 		}
 		return null;
@@ -133,5 +137,26 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		return null;
 
 	}
+	
+	
+	public List<LineaPedido> verCarroActual(){
+		return this.pedido.getLineasPedido();
+	}
+
+	/**
+	 * @param articulosDAO the articulosDAO to set
+	 */
+	public void setArticulosDAO(IArticulosDAO articulosDAO) {
+		this.articulosDAO = articulosDAO;
+	}
+
+	/**
+	 * @param pedido the pedido to set PARA TESTS
+	 */
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+	
+	
 
 }

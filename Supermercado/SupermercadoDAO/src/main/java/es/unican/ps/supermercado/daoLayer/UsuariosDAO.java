@@ -8,7 +8,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import es.unican.ps.supermercado.entities.Articulo;
 import es.unican.ps.supermercado.entities.Usuario;
 
 @Stateful
@@ -65,7 +64,7 @@ public class UsuariosDAO implements IUsuariosDAOLocal, IUsuariosDAORemote {
 	@Override
 	public List<Usuario> usuarios() {
 		Query q = em.createQuery("SELECT u FROM Usuario u");
-	    return (List<Usuario>) q.getResultList();
+	    return q.getResultList();
 	}
 
 }
