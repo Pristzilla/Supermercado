@@ -26,9 +26,9 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	private static final int VALOR_DESCUENTO = 5;
 
 	@EJB
-	private IUsuariosDAOLocal usuariosDAO;
+	private IUsuariosDAO usuariosDAO;
 	@EJB
-	private IPedidosDAOLocal pedidosDAO;
+	private IPedidosDAO pedidosDAO;
 	@EJB
 	private IArticulosDAO articulosDAO;
 
