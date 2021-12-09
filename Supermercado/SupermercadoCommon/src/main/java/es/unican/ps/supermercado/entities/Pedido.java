@@ -22,7 +22,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="Pedidos")
-public class Pedido implements Serializable {
+public class Pedido implements Serializable, Comparable<Pedido> {
 	/**
 	 * 
 	 */
@@ -205,5 +205,10 @@ public class Pedido implements Serializable {
 	public String getHoraRecogidaString() {
 		return horaRecogida.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM));
 	}
+	@Override
+	public int compareTo(Pedido o) {
+		return this.fecha.compareTo(o.fecha);
+	}
+
 	
 }

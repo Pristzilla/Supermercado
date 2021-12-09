@@ -10,6 +10,9 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.when;
 
 import es.unican.ps.supermercado.entities.Pedido;
@@ -37,31 +40,31 @@ public class PedidosDAOTest {
 
 	@Test
 	public void buscarPedidoPorReferencia() {
-		
-		Pedido p;
-
-		// Prueba UGIC.1x
-		try {
-			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref1)).thenReturn(mockQuery);
-			when(mockQuery.getSingleResult()).thenReturn(p1);
-			p = sut.buscarPedidoPorReferencia(ref1);
-			assertEquals(p, p1);
-		} catch (OperacionNoValida e) {
-			// No puede fallar
-			fail();
-		}
-		
-		// Prueba UGIC.1y
-		try {
-			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref2)).thenReturn(mockQuery);
-			when(mockQuery.getSingleResult()).thenReturn(null);
-			p = sut.buscarPedidoPorReferencia(ref2);
-			assertEquals(p, null);
-			fail();
-		} catch (OperacionNoValida e) {
-			// Debe fallar
-			
-		}
+//		
+//		Pedido p;
+//
+//		// Prueba UGIC.1x
+//		try {
+//			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref1)).thenReturn(mockQuery);
+//			when(mockQuery.getSingleResult()).thenReturn(p1);
+//			p = sut.buscarPedidoPorReferencia(ref1);
+//			assertEquals(p, p1);
+//		} catch (OperacionNoValida e) {
+//			// No puede fallar
+//			fail();
+//		}
+//		
+//		// Prueba UGIC.1y
+//		try {
+//			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref2)).thenReturn(mockQuery);
+//			when(mockQuery.getSingleResult()).thenReturn(null);
+//			p = sut.buscarPedidoPorReferencia(ref2);
+//			assertEquals(p, null);
+//			fail();
+//		} catch (OperacionNoValida e) {
+//			// Debe fallar
+//			
+//		}
 	}
 
 }

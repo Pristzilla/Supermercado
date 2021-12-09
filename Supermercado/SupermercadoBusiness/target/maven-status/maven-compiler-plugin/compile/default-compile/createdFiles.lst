@@ -1,4 +1,4 @@
-es\unican\ps\supermercado\business\GestionTimer.class
-es\unican\ps\supermercado\business\GestionArticulos.class
-es\unican\ps\supermercado\business\GestionPedidos.class
-es\unican\ps\supermercado\business\GestionUsuarios.class
+es/unican/ps/supermercado/business/GestionPedidos.class
+es/unican/ps/supermercado/business/GestionTimer.class
+es/unican/ps/supermercado/business/GestionUsuarios.class
+es/unican/ps/supermercado/business/GestionArticulos.class

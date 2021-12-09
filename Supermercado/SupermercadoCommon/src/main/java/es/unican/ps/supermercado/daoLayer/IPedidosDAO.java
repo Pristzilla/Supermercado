@@ -11,7 +11,6 @@ public interface IPedidosDAO {
 	public Pedido eliminarPedido (Pedido p);
 	public Pedido buscarPedidoPorId (Long id);
 	public Pedido buscarPedidoPorReferencia (String ref);
-	public Pedido buscarPrimerPedidoPendiente();
 	public List<Pedido> pedidos();
 
 }

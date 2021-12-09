@@ -8,6 +8,7 @@ import javax.ejb.Stateful;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Collections;
 import java.util.List;
 
 import es.unican.ps.supermercado.businessLayer.*;
@@ -106,7 +107,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		}
 		return descuento;
 	}
-
+	
 	@Override
 	public Pedido entregaPedido(String ref, String dni) {
 
@@ -121,6 +122,18 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		return p;
 	}
 
+	@Override
+	public Pedido buscarPrimerPedidoPendiente() {
+		List<Pedido> pedidos = pedidosDAO.pedidos();
+		Collections.sort(pedidos);
+		for(Pedido p: pedidos) {
+			if(p.getEstado() == Pedido.Estado.PENDIENTE) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
 	/**
 	 * Metodo que procesa el primer pedido pendiente del supermercado
 	 * @return Pedido p si se ha procesado el pedido pendiente
@@ -128,7 +141,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	 */
 	@Override
 	public Pedido procesarPedido() {
-		Pedido p = pedidosDAO.buscarPrimerPedidoPendiente();
+		Pedido p = buscarPrimerPedidoPendiente();
 		if(p != null) {
 			p.setEstado(Pedido.Estado.PROCESADO);
 			p = pedidosDAO.modificarPedido(p);
@@ -156,6 +169,8 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
+
+
 	
 	
 
