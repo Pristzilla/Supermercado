@@ -8,8 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import es.unican.ps.supermercado.entities.Articulo;
 import es.unican.ps.supermercado.entities.Pedido;
 
 @Stateful
@@ -66,10 +64,9 @@ public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 		}
 	}
 
-
 	@Override
 	public Pedido buscarPrimerPedidoPendiente() {
-		Query q = em.createQuery("SELECT p FROM Pedido p WHERE p.estado = 'PENDIENTE'");
+		Query q = em.createQuery("SELECT p FROM Pedido p WHERE p.estado = 'PENDIENTE' ORDER BY p.fecha DESC");
 	    return (Pedido) q.getResultList().get(0);
 	}
 

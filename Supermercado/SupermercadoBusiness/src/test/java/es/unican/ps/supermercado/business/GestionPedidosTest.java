@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+import static org.mockito.Mockito.when;
 
 import es.unican.ps.supermercado.daoLayer.IArticulosDAO;
 import es.unican.ps.supermercado.entities.Articulo;
