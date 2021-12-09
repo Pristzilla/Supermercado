@@ -16,11 +16,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 import static org.mockito.Mockito.when;
-<<<<<<< HEAD
-=======
 
 import java.util.List;
->>>>>>> 79c9aa8cdb984ab7665385eff3cece354b2d339a
 
 import es.unican.ps.supermercado.daoLayer.IArticulosDAO;
 import es.unican.ps.supermercado.entities.Articulo;

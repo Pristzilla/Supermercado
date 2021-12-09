@@ -15,9 +15,6 @@
 			<artifactId>SupermercadoCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-<<<<<<< HEAD
-
-=======
 		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -26,7 +23,6 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
->>>>>>> 79c9aa8cdb984ab7665385eff3cece354b2d339a
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
