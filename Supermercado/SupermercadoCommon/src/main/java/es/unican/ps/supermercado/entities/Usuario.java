@@ -32,6 +32,7 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy="usuario")
 	private List<Pedido> pedidos;
 	
+    public Usuario() {}
 	/**
 	 * Construye un usuario
 	 * @param nombre

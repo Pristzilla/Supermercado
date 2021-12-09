@@ -21,12 +21,12 @@ public class Articulo implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private static String nombre;
+	private String nombre;
 	@Column(name="uds_stock")
 	private int unidadesStock;
 	private double precio;
 	
-
+	public Articulo() {}
 	public Articulo(int unidadesStock, double precio) {
 		this.unidadesStock = unidadesStock;
 		this.precio = precio;
@@ -57,7 +57,7 @@ public class Articulo implements Serializable {
 	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
-		Articulo.nombre = nombre;
+		this.nombre = nombre;
 	}
 
 	/**
