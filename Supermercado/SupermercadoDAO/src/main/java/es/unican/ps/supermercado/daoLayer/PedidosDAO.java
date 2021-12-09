@@ -8,10 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-<<<<<<< HEAD
-=======
 
->>>>>>> 79c9aa8cdb984ab7665385eff3cece354b2d339a
 import es.unican.ps.supermercado.entities.Pedido;
 
 @Stateful
