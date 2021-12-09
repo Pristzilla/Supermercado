@@ -15,9 +15,14 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+import static org.mockito.Mockito.when;
+
+import java.util.List;
 
 import es.unican.ps.supermercado.daoLayer.IArticulosDAO;
 import es.unican.ps.supermercado.entities.Articulo;
+import es.unican.ps.supermercado.entities.LineaPedido;
+import es.unican.ps.supermercado.entities.Pedido;
 
 
 /**
@@ -26,38 +31,40 @@ import es.unican.ps.supermercado.entities.Articulo;
  */
 public class GestionPedidosTest {
 
-	
+
 	private GestionPedidos sut;
-	
+
 	@Mock
-	private IArticulosDAO mockArticulos;
+	private IArticulosDAO mockArticulosDAO;
+	@Mock Pedido pedido;
 	@Rule 
 	public MockitoRule mockitoRule = MockitoJUnit.rule(); 
-	
+
 	private Articulo articuloExistente1, articuloExistente2;
-	
-	
-	
+
+
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		
-		// Asignacion del sut
-		sut = new GestionPedidos();
+
+
 		
 		// Programacion de mocks
+		pedido = new Pedido(Pedido.Estado.NO_CONFIRMADO);
 		articuloExistente1 = new Articulo(10, 5.99);
 		articuloExistente1.setId(1L);
-		
-		articuloExistente2 = new Articulo(100, 2.50);
-		articuloExistente2.setId(2L);
-		
-		when(mockArticulos.buscarArticuloPorId(0L)).thenReturn(null);
-		when(mockArticulos.buscarArticuloPorId(1L)).thenReturn(articuloExistente1);
-		when(mockArticulos.buscarArticuloPorId(2L)).thenReturn(articuloExistente2);
+
+
+		when(mockArticulosDAO.buscarArticuloPorId(1L)).thenReturn(articuloExistente1);
+		when(mockArticulosDAO.buscarArticuloPorId(0L)).thenReturn(null);
+
+		// Asignacion del sut
+		sut = new GestionPedidos();
+		sut.setArticulosDAO(mockArticulosDAO);
+		sut.setPedido(pedido);
 
 	}
 
@@ -69,9 +76,31 @@ public class GestionPedidosTest {
 	}
 
 	@Test
-	public void test() {
-		
-		fail("Not yet implemented");
+	public void testAnhadirArticuloACarrito() {
+
+		List<LineaPedido> carrito = sut.verCarroActual();
+		 assertEquals(0, carrito.size());
+		 
+		// UGIC. 1.c idArticulo existente y stock del mismo suficiente
+		carrito = sut.anhadirArticuloACarrito(1L, 1);
+		assertEquals( 1, carrito.size());
+
+		// UGIC. 1.d idArticulo existente y stock del mismo insuficiente
+		carrito = sut.anhadirArticuloACarrito(1L, 100);
+		assertEquals(null, carrito);
+
+		// UGIC. 1.e idArticulo existente y se solicitan 0 uds.
+		carrito = sut.anhadirArticuloACarrito(1L, 0);
+		assertEquals( 1, carrito.size());
+
+		// UGIC. 1.f idArticulo NO existente y se solicitan 0 uds.
+		carrito = sut.anhadirArticuloACarrito(0L, 1);
+		assertEquals(null, carrito);
+
+		// UGIC. 1.g idArticulo null y se solicitan 1 uds.
+		carrito = sut.anhadirArticuloACarrito(null, 1);
+		assertEquals(null, carrito);
+
 	}
 
 }

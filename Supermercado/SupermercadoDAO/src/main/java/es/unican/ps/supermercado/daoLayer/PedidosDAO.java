@@ -9,7 +9,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import es.unican.ps.supermercado.entities.Articulo;
 import es.unican.ps.supermercado.entities.Pedido;
 
 @Stateful
@@ -77,7 +76,7 @@ public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 	@Override
 	public List<Pedido> pedidos() {
 		Query q = em.createQuery("SELECT p FROM Pedido p");
-	    return (List<Pedido>) q.getResultList();
+	    return q.getResultList();
 	}
 
 }
