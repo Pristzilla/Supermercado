@@ -1,66 +1,67 @@
 package es.unican.ps.supermercado.daoLayer;
 
-// import static org.mockito.Mockito.*;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
+import static org.mockito.Mockito.when;
 
 import es.unican.ps.supermercado.entities.Pedido;
 
 public class PedidosDAOTest {
 
 	private PedidosDAO sut;
+	@Mock
+	private EntityManager mockEM;
+	@Mock
+	private Query mockQuery;
+	@Rule 
+	public MockitoRule mockitoRule = MockitoJUnit.rule();  
+	
+	Pedido p1;
+	private String ref1 = "referencia1";
+	private String ref2 = "referencia2";
 
 	@Before
 	public void setUp() throws Exception {
 		sut = new PedidosDAO();
+		p1 = new Pedido(Pedido.Estado.NO_CONFIRMADO);
+		p1.setRef(ref1);
 	}
 
-	/**
-	 * Nota: al ejecutarse este test, existen 3 pedidos pendientes:
-	 * Pedido 1: '10/12/2021', ref: '12345678AA' 
-	 * Pedido 2: '11/12/2021', ref: '12345678CC',
-	 * Pedido 3: '12/12/2021', ref: '12345678DD' .
-	 */
 	@Test
 	public void buscarPedidoPorReferencia() {
+		
+		Pedido p;
 
-		// Prueba UGIC.1u 
+		// Prueba UGIC.1x
 		try {
-			assertEquals(sut.buscarPrimerPedidoPendiente(), null);
+			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref1)).thenReturn(mockQuery);
+			when(mockQuery.getSingleResult()).thenReturn(p1);
+			p = sut.buscarPedidoPorReferencia(ref1);
+			assertEquals(p, p1);
 		} catch (OperacionNoValida e) {
 			// No puede fallar
 			fail();
 		}
-
-		// Anhadimos pedidos pendientes
-		this.loadData();
-
-		// Prueba UGIC.1t 
-		String referencia = "12345678AA";
-		Pedido p = sut.buscarPedidoPorReferencia(referencia);
+		
+		// Prueba UGIC.1y
 		try {
-			assertEquals(sut.buscarPrimerPedidoPendiente(), p);
-		} catch (OperacionNoValida e) {
-			// No puede fallar
+			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref2)).thenReturn(mockQuery);
+			when(mockQuery.getSingleResult()).thenReturn(null);
+			p = sut.buscarPedidoPorReferencia(ref2);
+			assertEquals(p, null);
 			fail();
-		}
-
-		// Eliminar dos pedidos
-		sut.eliminarPedido(p);
-		referencia = "12345678CC";
-		p = sut.buscarPedidoPorReferencia(referencia);
-		sut.eliminarPedido(p);
-
-		// Prueba UGIC.1t 
-		referencia = "12345678DD";
-		p = sut.buscarPedidoPorReferencia(referencia);
-		try {
-			assertEquals(sut.buscarPrimerPedidoPendiente(), p);
 		} catch (OperacionNoValida e) {
-			// No puede fallar
-			fail();
+			// Debe fallar
+			
 		}
-
 	}
 
 }

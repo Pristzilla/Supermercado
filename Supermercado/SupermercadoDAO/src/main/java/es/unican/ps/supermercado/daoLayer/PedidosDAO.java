@@ -44,13 +44,7 @@ public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 
 	@Override
 	public Pedido buscarPedidoPorId(Long id) {
-		Query q = em.createQuery("SELECT p FROM Pedido p WHERE p.id = :id");
-		q.setParameter("id", id);
-		try {
-			return (Pedido) q.getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
+		return em.find(Pedido.class, id);
 	}
 
 	@Override
