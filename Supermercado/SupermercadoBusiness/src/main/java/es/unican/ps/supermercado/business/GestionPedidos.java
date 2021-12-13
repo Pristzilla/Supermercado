@@ -27,11 +27,11 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	private static final int VALOR_DESCUENTO = 5;
 
 	@EJB
-	private IUsuariosDAO usuariosDAO;
+	private IUsuariosDAORemote usuariosDAO;
 	@EJB
-	private IPedidosDAO pedidosDAO;
+	private IPedidosDAORemote pedidosDAO;
 	@EJB
-	private IArticulosDAO articulosDAO;
+	private IArticulosDAORemote articulosDAO;
 
 	@Resource 
 	private SessionContext context;
@@ -159,7 +159,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 	/**
 	 * @param articulosDAO the articulosDAO to set
 	 */
-	public void setArticulosDAO(IArticulosDAO articulosDAO) {
+	public void setArticulosDAO(IArticulosDAORemote articulosDAO) {
 		this.articulosDAO = articulosDAO;
 	}
 

@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Dec 13 23:42:05 CET 2021:
+ Iniciando instancia a816c00e-017d-b5f5-d13f-00001b7f9568 de Derby, versión The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): 
+en el directorio de base de datos /private/var/folders/l_/3ssxt6hx7l931y9z_pg_dy500000gn/T/gfembed5557299349311814546tmp/lib/databases/ejbtimer con el cargador de clases sun.misc.Launcher$AppClassLoader@42a57993
+Cargado desde file:/Users/barquinj/.m2/repository/org/glassfish/main/extras/glassfish-embedded-all/5.0/glassfish-embedded-all-5.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_301-b09
+user.dir=/Users/barquinj/GitHub/Supermercado/Supermercado/SupermercadoTests
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.16
+derby.system.home=null
+Cargador de clases de base de datos iniciado - derby.database.classpath=''

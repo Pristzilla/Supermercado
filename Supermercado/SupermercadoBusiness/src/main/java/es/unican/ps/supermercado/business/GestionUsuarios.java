@@ -12,13 +12,13 @@ import javax.persistence.PersistenceContext;
 import es.unican.ps.supermercado.businessLayer.IGestionUsuariosLocal;
 import es.unican.ps.supermercado.businessLayer.IGestionUsuariosRemote;
 import es.unican.ps.supermercado.entities.Usuario;
-import es.unican.ps.supermercado.daoLayer.IUsuariosDAOLocal;
+import es.unican.ps.supermercado.daoLayer.IUsuariosDAORemote;
 
 @Stateless
 public class GestionUsuarios implements IGestionUsuariosLocal, IGestionUsuariosRemote {
 
 	@EJB
-	private IUsuariosDAOLocal usuariosDAO;
+	private IUsuariosDAORemote usuariosDAO;
 	
 	@Resource
 	TimerService timerService;
