@@ -122,8 +122,8 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		return p;
 	}
 
-	@Override
-	public Pedido buscarPrimerPedidoPendiente() {
+	
+	private Pedido buscarPrimerPedidoPendiente() {
 		List<Pedido> pedidos = pedidosDAO.pedidos();
 		Collections.sort(pedidos);
 		for(Pedido p: pedidos) {

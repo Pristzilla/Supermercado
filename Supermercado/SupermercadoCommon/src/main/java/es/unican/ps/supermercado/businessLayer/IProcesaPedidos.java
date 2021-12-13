@@ -6,5 +6,4 @@ public interface IProcesaPedidos {
 
 	public Pedido entregaPedido(String ref, String dni);
 	public Pedido procesarPedido();
-	public Pedido buscarPrimerPedidoPendiente();
 }

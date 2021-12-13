@@ -3,7 +3,6 @@ package es.unican.ps.supermercado.businessLayer;
 import java.time.LocalTime;
 import java.util.List;
 
-import es.unican.ps.supermercado.daoLayer.IArticulosDAO;
 import es.unican.ps.supermercado.entities.LineaPedido;
 import es.unican.ps.supermercado.entities.Pedido;
 
