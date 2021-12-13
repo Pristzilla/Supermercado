@@ -36,11 +36,12 @@ public class GestionPedidosTest {
 
 	@Mock
 	private IArticulosDAO mockArticulosDAO;
-	@Mock Pedido pedido;
+	
+	private Pedido pedido;
 	@Rule 
 	public MockitoRule mockitoRule = MockitoJUnit.rule(); 
 
-	private Articulo articuloExistente1, articuloExistente2;
+	private Articulo articuloExistente;
 
 
 
@@ -54,11 +55,11 @@ public class GestionPedidosTest {
 		
 		// Programacion de mocks
 		pedido = new Pedido(Pedido.Estado.NO_CONFIRMADO);
-		articuloExistente1 = new Articulo(10, 5.99);
-		articuloExistente1.setId(1L);
+		articuloExistente = new Articulo(10, 5.99);
+		articuloExistente.setId(1L);
 
 
-		when(mockArticulosDAO.buscarArticuloPorId(1L)).thenReturn(articuloExistente1);
+		when(mockArticulosDAO.buscarArticuloPorId(1L)).thenReturn(articuloExistente);
 		when(mockArticulosDAO.buscarArticuloPorId(0L)).thenReturn(null);
 
 		// Asignacion del sut
@@ -83,7 +84,7 @@ public class GestionPedidosTest {
 		 
 		// UGIC. 1.c idArticulo existente y stock del mismo suficiente
 		carrito = sut.anhadirArticuloACarrito(1L, 1);
-		assertEquals( 1, carrito.size());
+		assertEquals(1, carrito.size());
 
 		// UGIC. 1.d idArticulo existente y stock del mismo insuficiente
 		carrito = sut.anhadirArticuloACarrito(1L, 100);
@@ -91,7 +92,7 @@ public class GestionPedidosTest {
 
 		// UGIC. 1.e idArticulo existente y se solicitan 0 uds.
 		carrito = sut.anhadirArticuloACarrito(1L, 0);
-		assertEquals( 1, carrito.size());
+		assertEquals(1, carrito.size());
 
 		// UGIC. 1.f idArticulo NO existente y se solicitan 0 uds.
 		carrito = sut.anhadirArticuloACarrito(0L, 1);
