@@ -48,11 +48,13 @@ public class GestionPedidosITest {
 
 		// Se crea el EJBContainter con propiedades
 		ec = EJBContainer.createEJBContainer(properties);
-		//ec.getContext().lookup("java:global/p<nombreEAR>/<nombreEJB>!myBeans.<Interfaz>"
-		sut = (GestionPedidos) ec.getContext().lookup("java:global/SupermercadoEAR/es.unican.ps-SupermercadoBusiness-0.0.1-SNAPSHOT/GestionPedidos"
-				+ "!"
-				+ "es.unican.ps.businessLayer.IGestionPedidosRemote");
+//		ec.getContext().lookup("java:global/p<nombreEAR>/<nombreEJB>!myBeans.<Interfaz>"
+//		sut = (GestionPedidos) ec.getContext().lookup("java:global/SupermercadoEAR/es.unican.ps-SupermercadoBusiness-0.0.1-SNAPSHOT/GestionPedidos"
+//				+ "!"
+//				+ "es.unican.ps.businessLayer.IGestionPedidosRemote");
+		sut = (GestionPedidos) ec.getContext().lookup("java:comp/env/es.unican.ps.supermercado.business.GestionPedidos/usuariosDAO");
 	}
+	
 
 	@AfterClass
 	public static void closeContainer() throws Exception {
@@ -68,7 +70,7 @@ public class GestionPedidosITest {
 		articuloExistente = new Articulo(10, 5.99);
 		articuloExistente.setId(idExiste);
 		String dni = "72105220J";
-		sut.iniciarPedido(dni);
+//		sut.iniciarPedido(dni);
 	}
 
 
