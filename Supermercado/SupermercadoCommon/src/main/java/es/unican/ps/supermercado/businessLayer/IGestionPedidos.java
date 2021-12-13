@@ -11,6 +11,7 @@ public interface IGestionPedidos {
 	public Pedido iniciarPedido(String dni);
 	public List<LineaPedido> anhadirArticuloACarrito( Long idArt, int uds);
 	public Pedido confirmarCarro(LocalTime horaRegogida);
+	public List<LineaPedido> verCarroActual();
 
 
 }

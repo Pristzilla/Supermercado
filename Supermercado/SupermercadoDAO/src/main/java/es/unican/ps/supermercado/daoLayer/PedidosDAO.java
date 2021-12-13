@@ -59,17 +59,19 @@ public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 		}
 	}
 
-	@Override
-	public Pedido buscarPrimerPedidoPendiente() {
-		Query q = em.createQuery("SELECT p FROM Pedido p WHERE p.estado = 'PENDIENTE' ORDER BY p.fecha DESC");
-	    return (Pedido) q.getResultList().get(0);
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Pedido> pedidos() {
 		Query q = em.createQuery("SELECT p FROM Pedido p");
 	    return q.getResultList();
+	}
+	
+	/**
+	 * Metodo para test
+	 * @param em
+	 */
+	public void setEntityManager(EntityManager em) {
+		this.em = em;
 	}
 
 }

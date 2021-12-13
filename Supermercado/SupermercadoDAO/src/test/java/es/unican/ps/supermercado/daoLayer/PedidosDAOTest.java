@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import es.unican.ps.supermercado.entities.Pedido;
@@ -30,6 +32,7 @@ public class PedidosDAOTest {
 	@Before
 	public void setUp() throws Exception {
 		sut = new PedidosDAO();
+		sut.setEntityManager(mockEM);
 		p1 = new Pedido(Pedido.Estado.NO_CONFIRMADO);
 		p1.setRef(ref1);
 	}
@@ -40,16 +43,16 @@ public class PedidosDAOTest {
 		Pedido p;
 
 		// Prueba UGIC.1x
-		when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref1)).thenReturn(mockQuery);
+		when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = :ref")).thenReturn(mockQuery);
 		when(mockQuery.getSingleResult()).thenReturn(p1);
 		p = sut.buscarPedidoPorReferencia(ref1);
-		assertEquals(p, p1);
+		assertEquals(p1, p);
 		
 		// Prueba UGIC.1y
-		when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref2)).thenReturn(mockQuery);
+		when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = :ref")).thenReturn(mockQuery);
 		when(mockQuery.getSingleResult()).thenReturn(null);
 		p = sut.buscarPedidoPorReferencia(ref2);
-		assertEquals(p, null);
+		assertEquals(null, p);
 	}
 
 }
