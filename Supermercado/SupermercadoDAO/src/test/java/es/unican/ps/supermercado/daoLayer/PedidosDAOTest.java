@@ -2,8 +2,7 @@ package es.unican.ps.supermercado.daoLayer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -41,27 +40,16 @@ public class PedidosDAOTest {
 		Pedido p;
 
 		// Prueba UGIC.1x
-		try {
-			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref1)).thenReturn(mockQuery);
-			when(mockQuery.getSingleResult()).thenReturn(p1);
-			p = sut.buscarPedidoPorReferencia(ref1);
-			assertEquals(p, p1);
-		} catch (OperacionNoValida e) {
-			// No puede fallar
-			fail();
-		}
+		when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref1)).thenReturn(mockQuery);
+		when(mockQuery.getSingleResult()).thenReturn(p1);
+		p = sut.buscarPedidoPorReferencia(ref1);
+		assertEquals(p, p1);
 		
 		// Prueba UGIC.1y
-		try {
-			when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref2)).thenReturn(mockQuery);
-			when(mockQuery.getSingleResult()).thenReturn(null);
-			p = sut.buscarPedidoPorReferencia(ref2);
-			assertEquals(p, null);
-			fail();
-		} catch (OperacionNoValida e) {
-			// Debe fallar
-			
-		}
+		when(mockEM.createQuery("SELECT p FROM Pedido p WHERE p.ref = " + ref2)).thenReturn(mockQuery);
+		when(mockQuery.getSingleResult()).thenReturn(null);
+		p = sut.buscarPedidoPorReferencia(ref2);
+		assertEquals(p, null);
 	}
 
 }
