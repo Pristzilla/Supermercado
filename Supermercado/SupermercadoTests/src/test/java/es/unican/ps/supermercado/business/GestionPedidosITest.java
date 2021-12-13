@@ -21,6 +21,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import es.unican.ps.supermercado.businessLayer.IGestionPedidosRemote;
+import es.unican.ps.supermercado.daoLayer.IArticulosDAORemote;
+import es.unican.ps.supermercado.daoLayer.IPedidosDAORemote;
+import es.unican.ps.supermercado.daoLayer.IUsuariosDAORemote;
 import es.unican.ps.supermercado.entities.Articulo;
 import es.unican.ps.supermercado.entities.LineaPedido;
 
@@ -32,12 +35,12 @@ public class GestionPedidosITest {
 
 	private static EJBContainer ec;
 	private static IGestionPedidosRemote sut;
-	private static Articulo articuloExistente;
 	private static long idExiste = 1L;
 	private static long idNOExiste = 0L;
+	String dniExistente = "72105220J";
 
 
-	//@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@BeforeClass
 	public static void initContainer() throws Exception {
 		Map properties = new HashMap();
@@ -48,11 +51,13 @@ public class GestionPedidosITest {
 
 		// Se crea el EJBContainter con propiedades
 		ec = EJBContainer.createEJBContainer(properties);
-//		ec.getContext().lookup("java:global/p<nombreEAR>/<nombreEJB>!myBeans.<Interfaz>"
-//		sut = (GestionPedidos) ec.getContext().lookup("java:global/SupermercadoEAR/es.unican.ps-SupermercadoBusiness-0.0.1-SNAPSHOT/GestionPedidos"
-//				+ "!"
-//				+ "es.unican.ps.businessLayer.IGestionPedidosRemote");
-		sut = (GestionPedidos) ec.getContext().lookup("java:comp/env/es.unican.ps.supermercado.business.GestionPedidos/usuariosDAO");
+
+//		INFORMACIÓN: Portable JNDI names for EJB GestionPedidos: 
+//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IProcesaPedidosRemote,
+//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IGestionPedidosRemote,
+//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IGestionPedidosLocal, 
+//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IProcesaPedidosLocal]
+		sut = (IGestionPedidosRemote) ec.getContext().lookup("java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IGestionPedidosRemote");
 	}
 	
 
@@ -67,37 +72,36 @@ public class GestionPedidosITest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		articuloExistente = new Articulo(10, 5.99);
-		articuloExistente.setId(idExiste);
-		String dni = "72105220J";
-//		sut.iniciarPedido(dni);
+		// Se supone que este metodo funciona correctamente ya que para anhadir al carrito
+		// es necesario haber iniciado un pedido previamente.
+		sut.iniciarPedido(dniExistente);
 	}
 
 
 	@Test
 	public void testAnhadirArticuloACarrito() {
-//		List<LineaPedido> carrito = sut.verCarroActual();
-//		assertEquals(0, carrito.size());
-//		 
-//		// IGIC. 1.c idArticulo existente y stock del mismo suficiente
-//		carrito = sut.anhadirArticuloACarrito(idExiste, 1);
-//		assertEquals( 1, carrito.size());
-//
-//		// UGIC. 1.d idArticulo existente y stock del mismo insuficiente
-//		carrito = sut.anhadirArticuloACarrito(idExiste, 100);
-//		assertEquals(null, carrito);
-//
-//		// UGIC. 1.e idArticulo existente y se solicitan 0 uds.
-//		carrito = sut.anhadirArticuloACarrito(idExiste, 0);
-//		assertEquals(1, carrito.size());
-//
-//		// UGIC. 1.f idArticulo NO existente y se solicitan 0 uds.
-//		carrito = sut.anhadirArticuloACarrito(idNOExiste, 1);
-//		assertEquals(null, carrito);
-//
-//		// UGIC. 1.g idArticulo null y se solicitan 1 uds.
-//		carrito = sut.anhadirArticuloACarrito(null, 1);
-//		assertEquals(null, carrito);
+		List<LineaPedido> carrito = sut.verCarroActual();
+		assertEquals(0, carrito.size());
+		 
+		// IGIC. 1.c idArticulo existente y stock del mismo suficiente
+		carrito = sut.anhadirArticuloACarrito(idExiste, 1);
+		assertEquals( 1, carrito.size());
+
+		// IGIC. 1.d idArticulo existente y stock del mismo insuficiente
+		carrito = sut.anhadirArticuloACarrito(idExiste, 100);
+		assertEquals(null, carrito);
+
+		// IGIC. 1.e idArticulo existente y se solicitan 0 uds.
+		carrito = sut.anhadirArticuloACarrito(idExiste, 0);
+		assertEquals(1, carrito.size());
+
+		// IGIC. 1.f idArticulo NO existente y se solicitan 1 uds.
+		carrito = sut.anhadirArticuloACarrito(idNOExiste, 1);
+		assertEquals(null, carrito);
+
+		// IGIC. 1.g idArticulo null y se solicitan 1 uds.
+		carrito = sut.anhadirArticuloACarrito(null, 1);
+		assertEquals(null, carrito);
 	}
 
 }

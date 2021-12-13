@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 
-import es.unican.ps.supermercado.daoLayer.IArticulosDAO;
+import es.unican.ps.supermercado.daoLayer.IArticulosDAORemote;
 import es.unican.ps.supermercado.entities.Articulo;
 import es.unican.ps.supermercado.entities.LineaPedido;
 import es.unican.ps.supermercado.entities.Pedido;
@@ -35,7 +35,7 @@ public class GestionPedidosTest {
 	private GestionPedidos sut;
 
 	@Mock
-	private IArticulosDAO mockArticulosDAO;
+	private IArticulosDAORemote mockArticulosDAO;
 	
 	private Pedido pedido;
 	@Rule 

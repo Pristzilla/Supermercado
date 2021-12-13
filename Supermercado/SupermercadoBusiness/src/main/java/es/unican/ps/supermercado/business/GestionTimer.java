@@ -13,14 +13,14 @@ import javax.ejb.TimerService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import es.unican.ps.supermercado.daoLayer.IUsuariosDAOLocal;
+import es.unican.ps.supermercado.daoLayer.IUsuariosDAORemote;
 import es.unican.ps.supermercado.entities.Usuario;
 
 @Singleton
 public class GestionTimer {
 
 	@EJB
-	private IUsuariosDAOLocal usuariosDAO;
+	private IUsuariosDAORemote usuariosDAO;
 	
 	@Resource
 	TimerService timerService;
