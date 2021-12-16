@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Supermercado</title>
+</h:head>
+<h:body>
+	<h1>Carro Compra</h1>
+	<h:form>
+
+		<h:dataTable value="#{gestionPedidosBean.carrito}" var="lineaPedido"
+			border="1" style="width: 467px;" cellpadding="4">
+			<h:column id="colName">
+				<p:facet name="header">
+					<h:outputText value="Nombre" />
+				</p:facet>
+				<h:outputText value="#{lineaPedido.articulo.nombre}" />
+			</h:column>
+			<h:column id="colPrice">
+				<p:facet name="header">
+					<h:outputText value="Unidades"></h:outputText>
+				</p:facet>
+				<h:outputText value="#{lineaPedido.cantidad}" />
+			</h:column>
+		</h:dataTable>
+		<br></br>
+		<h:outputLabel value="Precio : " />
+		<h:outputLabel id="precioSubtotal"
+			value="#{gestionPedidosBean.pedido.getPrecioTotal}" />
+
+		<h:form>
+			<h:outputLabel value="Hora Recogida (HH:MM): " />
+			<h:inputText id="horaRecogida"
+				value="#{gestionPedidosBean.horaReco}" style="width: 165px; "></h:inputText>
+		</h:form>
+
+		<h:commandButton id="buttonSeguir" value="Seguir Comprando"
+			action="articulos.xhtml" />
+			     <h:commandButton id="buttonConfirm" value="Confirmar Carro"
+            action="#{gestionPedidosBean.confirma}" />
+
+		<br></br>
+	</h:form>
+</h:body>
+</html>
