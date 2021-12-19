@@ -28,22 +28,27 @@ import es.unican.ps.supermercado.entities.Pedido;
 public class GestionPedidosBean {
 
 	@EJB
-	private IGestionPedidosRemote myGestionPedidos;
+	private IGestionPedidosRemote gestionPedidos;
 	@EJB
-	private IConsultaArticulosRemote myConsultaArticulos;
+	private IConsultaArticulosRemote consultaArticulos;
 	// pantallas
 	private String pantallaArticulos = "articulos";
 	private String pantallaRegistrarse = "registrarse";
 	private String pantallaCarro = "carroCompra";
 	private String pantallaRealizado = "pedidoRealizado";
+	private String pantallaInicio = "miSupermercado";
 	
 	private String horaReco;
 	private String dni;
-	private Pedido myPedido;
+	private Pedido pedido;
 	private Articulo articuloSeleccionado;
-	private int numUdsArticulo;
+	private int udsArticulo;
 
 	private List<Articulo> catalogo;
+	
+	public GestionPedidosBean() {
+		
+	}
 
 	public String getDni() {
 		return dni;
@@ -53,10 +58,10 @@ public class GestionPedidosBean {
 	}
 
 	public Pedido getPedido() {
-		return myPedido;
+		return pedido;
 	}
 	public void setMyPedido(Pedido pedido) {
-		this.myPedido = pedido;
+		this.pedido = pedido;
 	}
 	public List<Articulo> getCatalogo() {
 		return catalogo;
@@ -65,18 +70,16 @@ public class GestionPedidosBean {
 		this.catalogo = catalogo;
 	}
 	public List<LineaPedido> carrito(){
-		return this.myGestionPedidos.verCarroActual();
+		return this.gestionPedidos.verCarroActual();
 	}
-	
-
 
 	// Metodos 
 	public String iniciarSesion() {
-		this.myPedido = myGestionPedidos.iniciarPedido(dni);
-		if (myPedido == null) {
+		this.pedido = gestionPedidos.iniciarPedido(dni);
+		if (pedido == null) {
 			return pantallaRegistrarse;
 		} 
-		this.setCatalogo(myConsultaArticulos.articulos());
+		this.setCatalogo(consultaArticulos.articulos());
 		return pantallaArticulos;
 	}
 	
@@ -85,9 +88,9 @@ public class GestionPedidosBean {
 	}
 	
 	public String anhadirACarro(long id) {
-		articuloSeleccionado = myConsultaArticulos.buscaArticulo(id);
-		List<LineaPedido> myCart = myGestionPedidos.anhadirArticuloACarrito(articuloSeleccionado.getId(), numUdsArticulo);
-		if (myCart != null) {
+		articuloSeleccionado = consultaArticulos.buscaArticulo(id);
+		List<LineaPedido> carro = gestionPedidos.anhadirArticuloACarrito(articuloSeleccionado.getId(), udsArticulo);
+		if (carro != null) {
 			return pantallaCarro;
 		} 
 		return "noHayStock.xtml";
@@ -97,14 +100,17 @@ public class GestionPedidosBean {
 		return pantallaCarro;
 	}
 
-	public String confirma() {
-		Pedido ped = myGestionPedidos.confirmarCarro(LocalTime.parse(horaReco));
+	public String confirmarCarro() {
+		Pedido ped = gestionPedidos.confirmarCarro(LocalTime.parse(horaReco));
 		if (ped == null) {
 			return "errorHora.xtml";
 		}
-		myPedido = ped;
+		pedido = ped;
 		return pantallaRealizado;
 	}
 	
+	public String cancelarPedido() {
+		return pantallaInicio;
+	}
 
 }

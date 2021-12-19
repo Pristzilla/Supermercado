@@ -39,8 +39,10 @@
 
 		<h:commandButton id="buttonSeguir" value="Seguir Comprando"
 			action="articulos.xhtml" />
-			     <h:commandButton id="buttonConfirm" value="Confirmar Carro"
-            action="#{gestionPedidosBean.confirma}" />
+	     <h:commandButton id="buttonConfirm" value="Confirmar Carro"
+    action="#{gestionPedidosBean.confirmarCarro}" />
+    	<h:commandButton id="buttonCancel" value="Cancelar Pedido"
+    action="#{gestionPedidosBean.cancelarPedido}" />
 
 		<br></br>
 	</h:form>
