@@ -21,10 +21,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import es.unican.ps.supermercado.businessLayer.IGestionPedidosRemote;
-import es.unican.ps.supermercado.daoLayer.IArticulosDAORemote;
-import es.unican.ps.supermercado.daoLayer.IPedidosDAORemote;
-import es.unican.ps.supermercado.daoLayer.IUsuariosDAORemote;
-import es.unican.ps.supermercado.entities.Articulo;
+
 import es.unican.ps.supermercado.entities.LineaPedido;
 
 /**

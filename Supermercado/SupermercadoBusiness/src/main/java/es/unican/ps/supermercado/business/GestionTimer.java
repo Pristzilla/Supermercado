@@ -10,8 +10,6 @@ import javax.ejb.Timeout;
 import javax.ejb.Timer;
 import javax.ejb.TimerConfig;
 import javax.ejb.TimerService;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 import es.unican.ps.supermercado.daoLayer.IUsuariosDAORemote;
 import es.unican.ps.supermercado.entities.Usuario;
@@ -24,9 +22,6 @@ public class GestionTimer {
 	
 	@Resource
 	TimerService timerService;
-	
-	@PersistenceContext(unitName = "supermercadoPU")
-	private EntityManager em;
 	
 
 	// programar el timer mensual como uno que recorra todos los usuarios actualizando 

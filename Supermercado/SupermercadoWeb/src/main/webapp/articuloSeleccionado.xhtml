@@ -11,13 +11,13 @@
     <h:form>
         <h:panelGrid columns="2">
             <h:outputLabel value="Artículo: " />
-            <h:outputText id="nombreArticulo" value="#{articuloSeleccionadoBean.nombreArticulo}" />
+            <h:outputText id="nombreArticulo" value="#{gestionPedidosBean.articuloSeleccionado.nombre}" />
             <h:outputLabel value="Unidades :" />
-            <h:inputText id="numUdsArticulo" value="#{articuloSeleccionadoBean.numUdsArticulo}" style="width: 298px; "/>
+            <h:inputText id="numUdsArticulo" value="#{gestionPedidosBean.udsArticulo}" style="width: 298px; "/>
         </h:panelGrid>
         <br></br>
         <h:commandButton id="buttonBack" value="Volver" action="articulos"/> 
-        <h:commandButton id="buttonAdd" value="Añadir a carro" action="#{gestionPedidosBean.anadirACarro}"/>      
+        <h:commandButton id="buttonAdd" value="Añadir a carro" action="#{gestionPedidosBean.anhadirACarro}"/>      
     </h:form>
 </h:body>
 </html>

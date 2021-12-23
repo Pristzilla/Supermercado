@@ -6,8 +6,10 @@
  */
 package es.unican.ps.supermercado.web;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -25,8 +27,12 @@ import es.unican.ps.supermercado.entities.Pedido;
  */
 @Named
 @SessionScoped
-public class GestionPedidosBean {
+public class GestionPedidosBean implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@EJB
 	private IGestionPedidosRemote gestionPedidos;
 	@EJB
@@ -37,12 +43,14 @@ public class GestionPedidosBean {
 	private String pantallaCarro = "carroCompra";
 	private String pantallaRealizado = "pedidoRealizado";
 	private String pantallaInicio = "miSupermercado";
+	private String pantallaSeleccionado = "articuloSeleccionado";
 	
 	private String horaReco;
 	private String dni;
 	private Pedido pedido;
 	private Articulo articuloSeleccionado;
 	private int udsArticulo;
+	private List<LineaPedido> carrito;
 
 	private List<Articulo> catalogo;
 	
@@ -57,10 +65,41 @@ public class GestionPedidosBean {
 		this.dni = dni;
 	}
 
+	public int getUdsArticulo() {
+		return udsArticulo;
+	}
+
+	public void setUdsArticulo(int udsArticulo) {
+		this.udsArticulo = udsArticulo;
+	}
+
+	public String getHoraReco() {
+		return horaReco;
+	}
+
+	public void setHoraReco(String horaReco) {
+		this.horaReco = horaReco;
+	}
+	public Articulo getArticuloSeleccionado() {
+		return articuloSeleccionado;
+	}
+
+	public void setArticuloSeleccionado(Articulo articuloSeleccionado) {
+		this.articuloSeleccionado = articuloSeleccionado;
+	}
+
+	public List<LineaPedido> getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(List<LineaPedido> carrito) {
+		this.carrito = carrito;
+	}
+
 	public Pedido getPedido() {
 		return pedido;
 	}
-	public void setMyPedido(Pedido pedido) {
+	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
 	public List<Articulo> getCatalogo() {
@@ -68,9 +107,6 @@ public class GestionPedidosBean {
 	}
 	public void setCatalogo(List<Articulo> catalogo) {
 		this.catalogo = catalogo;
-	}
-	public List<LineaPedido> carrito(){
-		return this.gestionPedidos.verCarroActual();
 	}
 
 	// Metodos 
@@ -86,24 +122,28 @@ public class GestionPedidosBean {
 	public String registrarse() {
 		return pantallaRegistrarse;
 	}
-	
-	public String anhadirACarro(long id) {
+	public String seleccionarArticulo(long id) {
 		articuloSeleccionado = consultaArticulos.buscaArticulo(id);
+		return pantallaSeleccionado;
+	}
+	public String anhadirACarro() {
 		List<LineaPedido> carro = gestionPedidos.anhadirArticuloACarrito(articuloSeleccionado.getId(), udsArticulo);
 		if (carro != null) {
+			setCarrito(carro);
 			return pantallaCarro;
 		} 
 		return "noHayStock.xtml";
 	}
 
 	public String verCarro() {
+		setCarrito(this.gestionPedidos.verCarroActual());
 		return pantallaCarro;
 	}
 
 	public String confirmarCarro() {
 		Pedido ped = gestionPedidos.confirmarCarro(LocalTime.parse(horaReco));
 		if (ped == null) {
-			return "errorHora.xtml";
+			return "errorHora";
 		}
 		pedido = ped;
 		return pantallaRealizado;
@@ -112,5 +152,7 @@ public class GestionPedidosBean {
 	public String cancelarPedido() {
 		return pantallaInicio;
 	}
+
+	
 
 }
