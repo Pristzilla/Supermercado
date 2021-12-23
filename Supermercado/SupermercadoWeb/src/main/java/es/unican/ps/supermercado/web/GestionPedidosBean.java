@@ -10,7 +10,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 import es.unican.ps.supermercado.businessLayer.IConsultaArticulosRemote;
@@ -24,7 +24,7 @@ import es.unican.ps.supermercado.entities.Pedido;
  *
  */
 @Named
-@RequestScoped
+@SessionScoped
 public class GestionPedidosBean {
 
 	@EJB
