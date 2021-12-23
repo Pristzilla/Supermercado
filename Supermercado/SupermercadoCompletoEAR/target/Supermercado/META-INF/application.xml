@@ -10,5 +10,8 @@
       <context-root>/SupermercadoWeb</context-root>
     </web>
   </module>
+  <module>
+    <ejb>es.unican.ps-SupermercadoDAO-0.0.1-SNAPSHOT.jar</ejb>
+  </module>
   <library-directory>lib</library-directory>
 </application>

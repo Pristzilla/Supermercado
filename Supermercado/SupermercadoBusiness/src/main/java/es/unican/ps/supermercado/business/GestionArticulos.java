@@ -14,7 +14,7 @@ public class GestionArticulos implements IGestionArticulosLocal, IGestionArticul
 										 IConsultaArticulosLocal, IConsultaArticulosRemote {
 
 	@EJB
-	private IArticulosDAOLocal articulosDAO;
+	private IArticulosDAORemote articulosDAO;
 	
 	@Override
 	public Articulo crearArticulo(Articulo a) {
@@ -45,6 +45,16 @@ public class GestionArticulos implements IGestionArticulosLocal, IGestionArticul
 	@Override
 	public List<Articulo> articulo(String nombre) {
 		return articulosDAO.buscarArticuloPorNombre(nombre);
+	}
+
+	@Override
+	public List<Articulo> articulos() {
+		return articulosDAO.articulos();
+	}
+
+	@Override
+	public Articulo buscaArticulo(long id) {
+		return articulosDAO.buscarArticuloPorId(id);
 	}
 
 

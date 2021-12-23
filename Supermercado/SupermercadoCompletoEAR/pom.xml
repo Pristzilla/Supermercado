@@ -35,6 +35,12 @@
 			<artifactId>SupermercadoCommon</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>es.unican.ps</groupId>
+			<artifactId>SupermercadoDAO</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
 	</dependencies>
 
 	<build>

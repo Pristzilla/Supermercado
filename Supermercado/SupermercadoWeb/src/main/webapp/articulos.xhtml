@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Supermercado</title>
+</h:head>
+<h:body>
+	<h1>Articulos</h1>
+	<h:form>
+	
+		<h:dataTable value= "#{gestionPedidosBean.catalogo}" var="articulo" border="1"
+		 style="width: 467px;" cellpadding="4">
+			<h:column id="colName">
+				<p:facet name="header">
+					<h:outputText value="Nombre"/>
+				</p:facet>
+				<h:outputText value="#{articulo.nombre}"/>
+			</h:column>
+			<h:column id="colPrice">
+				<p:facet name="header">
+					<h:outputText value="Precio"></h:outputText>
+				</p:facet>
+				<h:outputText value="#{articulo.precio}"/>
+			</h:column>
+			<h:column id="colLink">
+                <p:facet name="header">
+                    <h:outputText value=""></h:outputText>
+                </p:facet>
+                <h:link value="Añadir al carro" outcome="#{gestionPedidosBean.seleccionarArticulo(articulo.id)}"/>
+            </h:column>
+		</h:dataTable>
+		<br></br>
+		      
+		<h:commandButton id="buttonVerCarro" value="Ver Carro" action="#{gestionPedidosBean.verCarro}" />
+		<br></br>
+		<br></br>
+		<h:link value="Volver al incio" outcome="miSupermercado.xhtml"></h:link>
+
+
+	</h:form>
+</h:body>
+</html>
