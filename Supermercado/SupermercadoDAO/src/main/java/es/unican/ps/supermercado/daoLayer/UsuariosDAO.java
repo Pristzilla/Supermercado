@@ -40,13 +40,7 @@ public class UsuariosDAO implements IUsuariosDAOLocal, IUsuariosDAORemote {
 
 	@Override
 	public Usuario buscarUsuarioPorId(Long id) {
-		Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.id = :id");
-		q.setParameter("id", id);
-		try {
-			return (Usuario) q.getSingleResult();
-		} catch (NoResultException e) {
-			return null;
-		}
+		return em.find(Usuario.class, id);
 	}
 
 	@Override

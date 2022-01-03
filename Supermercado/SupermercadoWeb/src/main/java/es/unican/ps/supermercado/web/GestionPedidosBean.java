@@ -94,6 +94,8 @@ public class GestionPedidosBean implements Serializable {
 
 	public void setCarrito(List<LineaPedido> carrito) {
 		this.carrito = carrito;
+		this.pedido.setLineasPedido(carrito);
+		this.pedido.calculaTotalPedido();
 	}
 
 	public Pedido getPedido() {
@@ -132,15 +134,18 @@ public class GestionPedidosBean implements Serializable {
 			setCarrito(carro);
 			return pantallaCarro;
 		} 
-		return "noHayStock.xtml";
+		return "noHayStock.xhtml";
 	}
 
 	public String verCarro() {
 		setCarrito(this.gestionPedidos.verCarroActual());
+		pedido.calculaTotalPedido();
 		return pantallaCarro;
 	}
 
 	public String confirmarCarro() {
+		System.out.println("CONFIRMAAAAA ");
+
 		Pedido ped = gestionPedidos.confirmarCarro(LocalTime.parse(horaReco));
 		if (ped == null) {
 			return "errorHora";
@@ -150,6 +155,8 @@ public class GestionPedidosBean implements Serializable {
 	}
 	
 	public String cancelarPedido() {
+		System.out.println("Entramos a cancelarpedido: ");
+		pedido = null;
 		return pantallaInicio;
 	}
 

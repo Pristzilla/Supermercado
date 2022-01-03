@@ -180,9 +180,9 @@ public class Pedido implements Serializable, Comparable<Pedido> {
 	public void calculaTotalPedido() {
 		double subtotal = 0.0;
 		for (LineaPedido linea : lineasPedido) {
-			subtotal = linea.getArticulo().getPrecio();
+			subtotal += linea.getArticulo().getPrecio()*linea.getCantidad();
 		}
-		this.precioTotal = subtotal*(100-this.descuento);
+		this.precioTotal = subtotal*((100-this.descuento)/100);
 	}
 	
 	/**
