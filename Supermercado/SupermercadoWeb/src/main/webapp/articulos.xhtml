@@ -10,35 +10,37 @@
 <h:body>
 	<h1>Articulos</h1>
 	<h:form>
-	
-		<h:dataTable value= "#{gestionPedidosBean.catalogo}" var="articulo" border="1"
-		 style="width: 467px;" cellpadding="4">
+
+		<h:dataTable value="#{gestionPedidosBean.catalogo}" var="articulo"
+			border="1" style="width: 467px;" cellpadding="4">
 			<h:column id="colName">
 				<p:facet name="header">
-					<h:outputText value="Nombre"/>
+					<h:outputText value="Nombre" />
 				</p:facet>
-				<h:outputText value="#{articulo.nombre}"/>
+				<h:outputText value="#{articulo.nombre}" />
 			</h:column>
 			<h:column id="colPrice">
 				<p:facet name="header">
 					<h:outputText value="Precio"></h:outputText>
 				</p:facet>
-				<h:outputText value="#{articulo.precio}"/>
+				<h:outputText value="#{articulo.precio}" />
 			</h:column>
 			<h:column id="colLink">
-                <p:facet name="header">
-                    <h:outputText value=""></h:outputText>
-                </p:facet>
-                <h:commandButton id="anhadirCarroButton" value="Añadir al carro" action="#{gestionPedidosBean.seleccionarArticulo(articulo.id)}"/>
-            </h:column>
+				<p:facet name="header">
+					<h:outputText value=""></h:outputText>
+				</p:facet>
+				<h:commandButton id="anhadirCarroButton" value="Añadir al carro"
+					action="#{gestionPedidosBean.seleccionarArticulo(articulo.id)}" />
+			</h:column>
 		</h:dataTable>
 		<br></br>
-		      
-		<h:commandButton id="buttonVerCarro" value="Ver Carro" action="#{gestionPedidosBean.verCarro}" />
-		<br></br>
-		<br></br>
-		<h:link value="Volver al incio" outcome="miSupermercado.xhtml"></h:link>
 
+		<h:commandButton id="buttonVerCarro" value="Ver Carro"
+			action="#{gestionPedidosBean.verCarro}" />
+		<br></br>
+		<br></br>
+		<h:commandButton id="buttonLogOut" value="Volver al inicio"
+			action="#{gestionPedidosBean.cerrarSesion}" />
 
 	</h:form>
 </h:body>

@@ -11,7 +11,10 @@
     <h:form>
         <h2>Pantalla para registrarse</h2>
         <br></br>
-        <h:link id="volver" value="Volver al Inicio" outcome= "miSupermercado.xhtml"/> 
+        <h:form>
+        <h:commandButton id="buttonLogOut" value="Volver al inicio"
+            action="#{gestionPedidosBean.cerrarSesion}" />
+    </h:form>
              
     </h:form>
 </h:body>

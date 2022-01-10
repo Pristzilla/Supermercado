@@ -3,6 +3,7 @@ package es.unican.ps.supermercado.business;
 
 import javax.annotation.Resource;
 import javax.ejb.EJB;
+import javax.ejb.Remove;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateful;
 
@@ -50,6 +51,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		this.usuario = u;
 		this.setPedido(new Pedido(Pedido.Estado.NO_CONFIRMADO));
 		this.pedido.setUsuario(u);
+		this.pedido.setDescuento(this.calculaDescuento());
 		return this.pedido;
 	}
 
@@ -86,15 +88,21 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 			String refPedido = this.pedido.getUsuario().getDni() + LocalDateTime.now().toString();
 			this.pedido.setRef(refPedido);
 			this.pedido.setEstado(Pedido.Estado.PENDIENTE);
-			this.pedido.aplicarDescuento(this.calculaDescuento()); 
 			this.pedido.calculaTotalPedido();
 			this.pedido.setFecha(LocalDateTime.now()); // la fecha del pedido se actualiza cuando se confirma el carro
-			this.setPedido(pedidosDAO.crearPedido(this.pedido));		
+			this.setPedido(pedidosDAO.crearPedido(this.pedido));	
+			this.usuario.addCompraMensual();
+			usuariosDAO.modificarUsuario(this.usuario);
 			return this.pedido;
 		}
 		return null;
 	}
 
+	
+	@Remove
+	public void cerrarSesion() {
+		// Cierra la sesion del Stateful.
+	}
 	/**
 	 * Metodo que aplica el descuento a un usuario si este lleva mas de 
 	 * 10 compras realizadas el mismo mes.
@@ -116,8 +124,6 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 		if (p == null || u == null || !(p.getUsuario().equals(u))) 
 			return null;
 		p.setEstado(Pedido.Estado.ENTREGADO);
-		u.addCompraMensual();
-		usuariosDAO.modificarUsuario(u);
 		p = pedidosDAO.modificarPedido(p);
 		return p;
 	}

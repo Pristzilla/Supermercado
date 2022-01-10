@@ -18,7 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.CascadeType;
 
 @Entity
 @Table(name="Pedidos")
@@ -31,7 +31,7 @@ public class Pedido implements Serializable, Comparable<Pedido> {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
+
 	private String ref;
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
@@ -39,14 +39,14 @@ public class Pedido implements Serializable, Comparable<Pedido> {
 	@Column(name="hora_recogida")
 	private LocalTime horaRecogida;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="Pedido_FK")
 	private List<LineaPedido> lineasPedido;
 	@ManyToOne
 	@JoinColumn(name="Usuario_FK")
 	private Usuario usuario;
-	@Transient
 	private int descuento = 0;
+	@Column(name="totalPedido")
 	private double precioTotal = 0.00;
 
 	public enum Estado {
@@ -170,10 +170,13 @@ public class Pedido implements Serializable, Comparable<Pedido> {
 	 * Aplica un descuento al pedido
 	 * @param descuento descuento a aplicar
 	 */
-	public void aplicarDescuento(int descuento) {
+	public void setDescuento(int descuento) {
 		this.descuento = descuento;
 	}
 	
+	public int getDescuento() {
+		return descuento;
+	}
 	/**
 	 * calcula el precio total del pedido
 	 */
@@ -182,7 +185,7 @@ public class Pedido implements Serializable, Comparable<Pedido> {
 		for (LineaPedido linea : lineasPedido) {
 			subtotal += linea.getArticulo().getPrecio()*linea.getCantidad();
 		}
-		this.precioTotal = subtotal*((100-this.descuento)/100);
+		this.precioTotal = subtotal*((100.00-this.descuento)/100.00);
 	}
 	
 	/**

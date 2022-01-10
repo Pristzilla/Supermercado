@@ -12,6 +12,7 @@ public interface IGestionPedidos {
 	public List<LineaPedido> anhadirArticuloACarrito( Long idArt, int uds);
 	public Pedido confirmarCarro(LocalTime horaRegogida);
 	public List<LineaPedido> verCarroActual();
+	public void cerrarSesion();
 
 
 }

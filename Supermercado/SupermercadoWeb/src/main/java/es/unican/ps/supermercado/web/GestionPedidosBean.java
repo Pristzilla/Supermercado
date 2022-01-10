@@ -13,6 +13,7 @@ import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import es.unican.ps.supermercado.businessLayer.IConsultaArticulosRemote;
@@ -144,8 +145,6 @@ public class GestionPedidosBean implements Serializable {
 	}
 
 	public String confirmarCarro() {
-		System.out.println("CONFIRMAAAAA ");
-
 		Pedido ped = gestionPedidos.confirmarCarro(LocalTime.parse(horaReco));
 		if (ped == null) {
 			return "errorHora";
@@ -154,9 +153,11 @@ public class GestionPedidosBean implements Serializable {
 		return pantallaRealizado;
 	}
 	
-	public String cancelarPedido() {
-		System.out.println("Entramos a cancelarpedido: ");
-		pedido = null;
+	public String cerrarSesion() {
+		gestionPedidos.cerrarSesion();
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		this.pedido = null;
+		dni="";
 		return pantallaInicio;
 	}
 

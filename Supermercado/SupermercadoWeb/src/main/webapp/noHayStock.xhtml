@@ -9,12 +9,14 @@
 <h:body>
     <h1>Error</h1>
     <h:form>
-        <h2>No hay stock suficiente de ese articulo.</h2><p align="left">
+        <h2>No hay stock suficiente de ese artículo.</h2><p align="left">
     
         <h:link id="volverCatalogo" value="Volver al Catalogo" outcome="articulos.xhtml" />
         <br /> 
-        <h:link id="volverIni" value="Volver al Inicio" outcome="miSupermercado.xhtml" />
-         
+        <h:form>
+        <h:commandButton id="buttonLogOut" value="Volver al inicio"
+            action="#{gestionPedidosBean.cerrarSesion}" />
+    </h:form>
     </p></h:form>
 </h:body>
 </html>
