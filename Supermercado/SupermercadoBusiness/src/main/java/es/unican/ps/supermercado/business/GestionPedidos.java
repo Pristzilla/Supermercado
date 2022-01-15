@@ -57,7 +57,7 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 
 	@Override
 	public List<LineaPedido> anhadirArticuloACarrito(Long idArt, int uds) {
-		if (idArt == null) {
+		if (idArt == null || uds < 0) {
 			return null;
 		}
 		Articulo a = articulosDAO.buscarArticuloPorId(idArt);
@@ -68,7 +68,6 @@ IProcesaPedidosLocal, IProcesaPedidosRemote {
 			// Se anhade el articulo al pedido
 			LineaPedido linea = new LineaPedido(uds, a);
 			this.pedido.addLineaPedido(linea);
-			
 		}
 		
 		return this.pedido.getLineasPedido();
