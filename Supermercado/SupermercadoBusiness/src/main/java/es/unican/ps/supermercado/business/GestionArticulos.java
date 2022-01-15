@@ -3,13 +3,13 @@ package es.unican.ps.supermercado.business;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
 import es.unican.ps.supermercado.businessLayer.*;
 import es.unican.ps.supermercado.daoLayer.*;
 import es.unican.ps.supermercado.entities.Articulo;
 
-@Stateful
+@Stateless
 public class GestionArticulos implements IGestionArticulosLocal, IGestionArticulosRemote,
 										 IConsultaArticulosLocal, IConsultaArticulosRemote {
 

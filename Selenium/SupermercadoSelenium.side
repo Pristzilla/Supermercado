@@ -1,0 +1,621 @@
+{
+  "id": "bc81c497-2b2f-4464-a4e0-cee4d6407ea4",
+  "version": "2.0",
+  "name": "Supermercado",
+  "url": "http://localhost:8080/SupermercadoWeb/miSupermercado.jsf",
+  "tests": [{
+    "id": "107592d9-bf38-4deb-b451-0c92862ca069",
+    "name": "Pedido 2Articulos Correcto",
+    "commands": [{
+      "id": "4baaa0b8-61f5-4584-8735-784d2500bc14",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/SupermercadoWeb/miSupermercado.jsf",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "058016a7-641f-4398-8507-e61fbbd356ec",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1618x928",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1bdd0808-9581-4f66-83b2-82b4aca9ade1",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr",
+      "targets": [
+        ["css=tr", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr", "xpath:idRelative"],
+        ["xpath=//tr", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "189e3f03-a1f7-43ba-870a-9eb36a777dba",
+      "comment": "",
+      "command": "type",
+      "target": "id=j_idt6:dni",
+      "targets": [
+        ["id=j_idt6:dni", "id"],
+        ["name=j_idt6:dni", "name"],
+        ["css=#j_idt6\\3A dni", "css:finder"],
+        ["xpath=//input[@id='j_idt6:dni']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "12345678A"
+    }, {
+      "id": "518c86fa-b8d0-4cd1-87fc-67f54ab91b04",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:buttonEnter",
+      "targets": [
+        ["id=j_idt6:buttonEnter", "id"],
+        ["name=j_idt6:buttonEnter", "name"],
+        ["css=#j_idt6\\3A buttonEnter", "css:finder"],
+        ["xpath=//input[@id='j_idt6:buttonEnter']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "977dc853-7bd7-4597-b1c6-81ea2edf1d5e",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:j_idt7:0:anhadirCarroButton",
+      "targets": [
+        ["id=j_idt6:j_idt7:0:anhadirCarroButton", "id"],
+        ["name=j_idt6:j_idt7:0:anhadirCarroButton", "name"],
+        ["css=#j_idt6\\3Aj_idt7\\3A 0\\3A anhadirCarroButton", "css:finder"],
+        ["xpath=//input[@id='j_idt6:j_idt7:0:anhadirCarroButton']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[3]/input", "xpath:idRelative"],
+        ["xpath=//td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "898d375d-3970-44b7-989f-fedc1aa8682d",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Agua de Solares 1L')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "19111332-a38b-4f36-a44c-51991d0ae592",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=j_idt6:nombreArticulo",
+      "targets": [
+        ["id=j_idt6:nombreArticulo", "id"],
+        ["css=#j_idt6\\3AnombreArticulo", "css:finder"],
+        ["xpath=//span[@id='j_idt6:nombreArticulo']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'Agua de Solares 1L')]", "xpath:innerText"]
+      ],
+      "value": "Agua de Solares 1L"
+    }, {
+      "id": "13f343fe-cc83-4a4b-90dd-73586e6a85e8",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:numUdsArticulo",
+      "targets": [
+        ["id=j_idt6:numUdsArticulo", "id"],
+        ["name=j_idt6:numUdsArticulo", "name"],
+        ["css=#j_idt6\\3AnumUdsArticulo", "css:finder"],
+        ["xpath=//input[@id='j_idt6:numUdsArticulo']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "74fd8c9f-5524-430f-98f6-58e5216704ab",
+      "comment": "",
+      "command": "type",
+      "target": "id=j_idt6:numUdsArticulo",
+      "targets": [
+        ["id=j_idt6:numUdsArticulo", "id"],
+        ["name=j_idt6:numUdsArticulo", "name"],
+        ["css=#j_idt6\\3AnumUdsArticulo", "css:finder"],
+        ["xpath=//input[@id='j_idt6:numUdsArticulo']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "186ceb08-9f04-44fb-ac1b-a007a027d500",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:buttonAdd",
+      "targets": [
+        ["id=j_idt6:buttonAdd", "id"],
+        ["name=j_idt6:buttonAdd", "name"],
+        ["css=#j_idt6\\3A buttonAdd", "css:finder"],
+        ["xpath=//input[@id='j_idt6:buttonAdd']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "46729fd5-a90b-4ccb-b618-e96559024f4b",
+      "comment": "",
+      "command": "click",
+      "target": "css=td:nth-child(1)",
+      "targets": [
+        ["css=td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Agua de Solares 1L')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf1a6a77-c12d-4364-91ca-4b3320df5ef8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(1)",
+      "targets": [
+        ["css=td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Agua de Solares 1L')]", "xpath:innerText"]
+      ],
+      "value": "Agua de Solares 1L"
+    }, {
+      "id": "8e1782fd-0c3b-4cce-aa9a-41a21cd76f2f",
+      "comment": "",
+      "command": "click",
+      "target": "css=td:nth-child(2)",
+      "targets": [
+        ["css=td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cd67adc-8178-49a0-92f4-8bf7ddacb1bc",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=td:nth-child(2)",
+      "targets": [
+        ["css=td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "398c7b88-4542-4477-94a9-186faeec920a",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6",
+      "targets": [
+        ["id=j_idt6", "id"],
+        ["name=j_idt6", "name"],
+        ["css=#j_idt6", "css:finder"],
+        ["xpath=//form[@id='j_idt6']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "291cb8a3-de2a-430c-a86f-a17b3732c80a",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=j_idt6:precioSubtotal",
+      "targets": [
+        ["id=j_idt6:precioSubtotal", "id"],
+        ["css=#j_idt6\\3AprecioSubtotal", "css:finder"],
+        ["xpath=//label[@id='j_idt6:precioSubtotal']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/label[2]", "xpath:idRelative"],
+        ["xpath=//label[2]", "xpath:position"],
+        ["xpath=//label[contains(.,'1.0')]", "xpath:innerText"]
+      ],
+      "value": "1.0"
+    }, {
+      "id": "b27381cc-67ac-4845-8fa2-4f00d0521ecb",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=j_idt6:j_idt14:seguirComprando",
+      "targets": [
+        ["id=j_idt6:j_idt14:seguirComprando", "id"],
+        ["linkText=Seguir Comprando", "linkText"],
+        ["name=j_idt6:j_idt14:seguirComprando", "name"],
+        ["css=#j_idt6\\3Aj_idt14\\3AseguirComprando", "css:finder"],
+        ["xpath=//a[contains(text(),'Seguir Comprando')]", "xpath:link"],
+        ["xpath=//a[@id='j_idt6:j_idt14:seguirComprando']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/SupermercadoWeb/articulos.jsf')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Seguir Comprando ')]", "xpath:innerText"]
+      ],
+      "value": "Seguir Comprando"
+    }, {
+      "id": "03f970c4-51a0-4b17-b986-53bc72ab1e9a",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:j_idt14:seguirComprando",
+      "targets": [
+        ["id=j_idt6:j_idt14:seguirComprando", "id"],
+        ["linkText=Seguir Comprando", "linkText"],
+        ["name=j_idt6:j_idt14:seguirComprando", "name"],
+        ["css=#j_idt6\\3Aj_idt14\\3AseguirComprando", "css:finder"],
+        ["xpath=//a[contains(text(),'Seguir Comprando')]", "xpath:link"],
+        ["xpath=//a[@id='j_idt6:j_idt14:seguirComprando']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/SupermercadoWeb/articulos.jsf')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Seguir Comprando ')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d218c4ad-64c9-4f68-ace5-42cad6be6474",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:j_idt7:1:anhadirCarroButton",
+      "targets": [
+        ["id=j_idt6:j_idt7:1:anhadirCarroButton", "id"],
+        ["name=j_idt6:j_idt7:1:anhadirCarroButton", "name"],
+        ["css=#j_idt6\\3Aj_idt7\\3A 1\\3A anhadirCarroButton", "css:finder"],
+        ["xpath=//input[@id='j_idt6:j_idt7:1:anhadirCarroButton']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td[3]/input", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2b63272-1f7e-4c95-b5a4-7007589b4e19",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr", "xpath:idRelative"],
+        ["xpath=//tr", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "08220e93-7a1c-4436-b131-15dcd87ebf20",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=j_idt6:nombreArticulo",
+      "targets": [
+        ["id=j_idt6:nombreArticulo", "id"],
+        ["css=#j_idt6\\3AnombreArticulo", "css:finder"],
+        ["xpath=//span[@id='j_idt6:nombreArticulo']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'Manzana Golden')]", "xpath:innerText"]
+      ],
+      "value": "Manzana Golden"
+    }, {
+      "id": "7c3c7d04-6bbe-4a83-b46b-259fc30863c3",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:numUdsArticulo",
+      "targets": [
+        ["id=j_idt6:numUdsArticulo", "id"],
+        ["name=j_idt6:numUdsArticulo", "name"],
+        ["css=#j_idt6\\3AnumUdsArticulo", "css:finder"],
+        ["xpath=//input[@id='j_idt6:numUdsArticulo']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "31faef10-38ac-44d2-bee8-4b5e511ac106",
+      "comment": "",
+      "command": "type",
+      "target": "id=j_idt6:numUdsArticulo",
+      "targets": [
+        ["id=j_idt6:numUdsArticulo", "id"],
+        ["name=j_idt6:numUdsArticulo", "name"],
+        ["css=#j_idt6\\3AnumUdsArticulo", "css:finder"],
+        ["xpath=//input[@id='j_idt6:numUdsArticulo']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "15fd2278-3e47-4e45-97c4-fc1789c8ca5c",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:buttonAdd",
+      "targets": [
+        ["id=j_idt6:buttonAdd", "id"],
+        ["name=j_idt6:buttonAdd", "name"],
+        ["css=#j_idt6\\3A buttonAdd", "css:finder"],
+        ["xpath=//input[@id='j_idt6:buttonAdd']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "15c3cd75-3c3a-4543-a902-fe8b1602dbff",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Agua de Solares 1L')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0f4ae21-aef3-4480-8963-c77bfc4c39a2",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td", "xpath:idRelative"],
+        ["xpath=//td", "xpath:position"],
+        ["xpath=//td[contains(.,'Agua de Solares 1L')]", "xpath:innerText"]
+      ],
+      "value": "Agua de Solares 1L"
+    }, {
+      "id": "418b7bbc-d438-4c33-85fb-f03799d9c593",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d157432a-d415-4a23-82da-4d6e629f889e",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98b9e319-78e9-4151-80bb-bca620ae405a",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": "15.296875,10.125"
+    }, {
+      "id": "df30ecf8-dc77-4d76-8fe8-0685436dbd40",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": "15.296875,10.125"
+    }, {
+      "id": "94d39b6c-329c-4bd0-8c7b-98aa370d33c7",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": "15.296875,10.125"
+    }, {
+      "id": "677163fd-40d4-414a-88d1-8c1990cf3f65",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "514f0b89-d153-459f-bf42-8cbc98076f55",
+      "comment": "",
+      "command": "doubleClick",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0085ad0a-3cbe-4b7f-b7b0-4f6010f83a75",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c8713c25-a534-4169-b80b-83dc99b6dffc",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(1) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(1) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr/td[2]", "xpath:idRelative"],
+        ["xpath=//td[2]", "xpath:position"]
+      ],
+      "value": "1"
+    }, {
+      "id": "a36947f1-26b0-4d97-9e81-fdc0699b43d1",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Manzana Golden')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f5f14626-fe14-4e9a-be46-4da5f33c020b",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td:nth-child(1)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(1)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td", "xpath:idRelative"],
+        ["xpath=//tr[2]/td", "xpath:position"],
+        ["xpath=//td[contains(.,'Manzana Golden')]", "xpath:innerText"]
+      ],
+      "value": "Manzana Golden"
+    }, {
+      "id": "40bc13c3-5820-4f68-8b3b-9b1f7e88b885",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(2) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1d398b91-e2de-4db8-9ce1-dce882734fc8",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=tr:nth-child(2) > td:nth-child(2)",
+      "targets": [
+        ["css=tr:nth-child(2) > td:nth-child(2)", "css:finder"],
+        ["xpath=//form[@id='j_idt6']/table/tbody/tr[2]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[2]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'2')]", "xpath:innerText"]
+      ],
+      "value": "2"
+    }, {
+      "id": "66ec22ea-c997-48e3-9886-7f8c64e6b22a",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6",
+      "targets": [
+        ["id=j_idt6", "id"],
+        ["name=j_idt6", "name"],
+        ["css=#j_idt6", "css:finder"],
+        ["xpath=//form[@id='j_idt6']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "de270012-3166-4f62-b73d-d3020a66feda",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=j_idt6:precioSubtotal",
+      "targets": [
+        ["id=j_idt6:precioSubtotal", "id"],
+        ["css=#j_idt6\\3AprecioSubtotal", "css:finder"],
+        ["xpath=//label[@id='j_idt6:precioSubtotal']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/label[2]", "xpath:idRelative"],
+        ["xpath=//label[2]", "xpath:position"],
+        ["xpath=//label[contains(.,'6.0')]", "xpath:innerText"]
+      ],
+      "value": "6.0"
+    }, {
+      "id": "d34c3591-b855-45cf-8f6f-5c9abd01253c",
+      "comment": "",
+      "command": "type",
+      "target": "id=j_idt6:j_idt14:horaRecogida",
+      "targets": [
+        ["id=j_idt6:j_idt14:horaRecogida", "id"],
+        ["name=j_idt6:j_idt14:horaRecogida", "name"],
+        ["css=#j_idt6\\3Aj_idt14\\3AhoraRecogida", "css:finder"],
+        ["xpath=//input[@id='j_idt6:j_idt14:horaRecogida']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[3]", "xpath:idRelative"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": "12:49"
+    }, {
+      "id": "139061c6-2068-432b-9ebf-c7704e5cdf26",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:j_idt14:buttonConfirm",
+      "targets": [
+        ["id=j_idt6:j_idt14:buttonConfirm", "id"],
+        ["name=j_idt6:j_idt14:buttonConfirm", "name"],
+        ["css=#j_idt6\\3Aj_idt14\\3A buttonConfirm", "css:finder"],
+        ["xpath=//input[@id='j_idt6:j_idt14:buttonConfirm']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/p/input", "xpath:idRelative"],
+        ["xpath=//p/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce1a6607-dd66-47e9-9c58-1ef4fd86511b",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"],
+        ["xpath=//html[contains(.,'Pedido Realizado')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "092cc9df-8fd2-4e89-a1a2-8eaf2b6cd834",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Pedido Realizado')]", "xpath:innerText"]
+      ],
+      "value": "Pedido Realizado"
+    }, {
+      "id": "b21f850c-6cfa-4e61-9123-a2202258fa65",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6",
+      "targets": [
+        ["id=j_idt6", "id"],
+        ["name=j_idt6", "name"],
+        ["css=#j_idt6", "css:finder"],
+        ["xpath=//form[@id='j_idt6']", "xpath:attributes"],
+        ["xpath=//form", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "50c305cb-8aa2-4bcd-bced-f0aef1062a7a",
+      "comment": "",
+      "command": "click",
+      "target": "id=j_idt6:buttonLogOut",
+      "targets": [
+        ["id=j_idt6:buttonLogOut", "id"],
+        ["name=j_idt6:buttonLogOut", "name"],
+        ["css=#j_idt6\\3A buttonLogOut", "css:finder"],
+        ["xpath=//input[@id='j_idt6:buttonLogOut']", "xpath:attributes"],
+        ["xpath=//form[@id='j_idt6']/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "7cd5056b-5915-4a08-823f-587fb82a4fe6",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:8080/SupermercadoWeb/miSupermercado.jsf"],
+  "plugins": []
+}

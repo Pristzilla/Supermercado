@@ -1,7 +1,7 @@
 package es.unican.ps.supermercado.daoLayer;
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -10,7 +10,7 @@ import javax.persistence.Query;
 
 import es.unican.ps.supermercado.entities.Usuario;
 
-@Stateful
+@Stateless
 public class UsuariosDAO implements IUsuariosDAOLocal, IUsuariosDAORemote {
 
 	@PersistenceContext(unitName="supermercadoPU")
@@ -34,8 +34,12 @@ public class UsuariosDAO implements IUsuariosDAOLocal, IUsuariosDAORemote {
 
 	@Override
 	public Usuario eliminarUsuario(Usuario u) {
-		em.remove(u);
-		return u;
+		Usuario us = em.find(Usuario.class, u.getId());
+		if (us == null) {
+			return null;
+		}
+		em.remove(us);
+		return us;
 	}
 
 	@Override

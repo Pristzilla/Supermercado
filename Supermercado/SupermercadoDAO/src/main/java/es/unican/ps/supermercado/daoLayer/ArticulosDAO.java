@@ -2,7 +2,7 @@ package es.unican.ps.supermercado.daoLayer;
 
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,7 +10,7 @@ import javax.persistence.Query;
 
 import es.unican.ps.supermercado.entities.Articulo;
 
-@Stateful
+@Stateless
 public class ArticulosDAO implements IArticulosDAOLocal, IArticulosDAORemote {
 
 	@PersistenceContext(unitName="supermercadoPU")
@@ -34,8 +34,12 @@ public class ArticulosDAO implements IArticulosDAOLocal, IArticulosDAORemote {
 
 	@Override
 	public Articulo eliminarArticulo(Articulo a) {
-		em.remove(a);
-		return a;
+		Articulo art = em.find(Articulo.class, a.getId());
+		if (art == null) {
+			return null;
+		}
+		em.remove(art);
+		return art;
 	}
 
 	@SuppressWarnings("unchecked")

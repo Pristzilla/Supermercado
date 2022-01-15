@@ -41,7 +41,7 @@ public class GestionPedidosTest {
 	@Rule 
 	public MockitoRule mockitoRule = MockitoJUnit.rule(); 
 
-	private Articulo articuloExistente;
+	private Articulo articuloExistente, articuloSinStock;
 
 
 
@@ -57,10 +57,16 @@ public class GestionPedidosTest {
 		pedido = new Pedido(Pedido.Estado.NO_CONFIRMADO);
 		articuloExistente = new Articulo(10, 5.99);
 		articuloExistente.setId(1L);
+		articuloExistente.setNombre("Agua de Solares 1L");
 
+		articuloSinStock = new Articulo (1, 1.95);
+		articuloSinStock.setId(2L);
+		articuloExistente.setNombre("Coca-Cola 33cl");
 
 		when(mockArticulosDAO.buscarArticuloPorId(1L)).thenReturn(articuloExistente);
 		when(mockArticulosDAO.buscarArticuloPorId(0L)).thenReturn(null);
+		when(mockArticulosDAO.buscarArticuloPorId(2L)).thenReturn(articuloSinStock);
+
 
 		// Asignacion del sut
 		sut = new GestionPedidos();
@@ -79,15 +85,22 @@ public class GestionPedidosTest {
 	@Test
 	public void testAnhadirArticuloACarrito() {
 
-		List<LineaPedido> carrito = sut.verCarroActual();
-		 assertEquals(0, carrito.size());
-		 
+		List<LineaPedido> carritoPrevio = sut.verCarroActual();
+		List<LineaPedido> carrito = carritoPrevio;
 		// UGIC. 1.c idArticulo existente y stock del mismo suficiente
 		carrito = sut.anhadirArticuloACarrito(1L, 1);
-		assertEquals(1, carrito.size());
+		// se comprueba que el carro ahora tiene un articulo mas
+		assertEquals(carritoPrevio.size()+1, carrito.size());
+		// se comprueba que se ha anhadido ese articulo
+		assertEquals("Agua de Solares 1L", carrito.get(carrito.size()-1).getArticulo().getNombre());
+		assertEquals(1, carrito.get(carrito.size()-1).getCantidad());
 
-		// UGIC. 1.d idArticulo existente y stock del mismo insuficiente
-		carrito = sut.anhadirArticuloACarrito(1L, 100);
+		// Se comprueba que previamente no hay el articulo Coca-Cola en el carrito.
+		for(LineaPedido lc : carritoPrevio) {
+			assertNotEquals("Coca-Cola 33cl",lc.getArticulo().getNombre());
+		}		
+		// UGIC. 1.d idArticulo existente y stock del mismo insuficiente.
+		carrito = sut.anhadirArticuloACarrito(2L, 100);
 		assertEquals(null, carrito);
 
 		// UGIC. 1.e idArticulo existente y se solicitan 0 uds.

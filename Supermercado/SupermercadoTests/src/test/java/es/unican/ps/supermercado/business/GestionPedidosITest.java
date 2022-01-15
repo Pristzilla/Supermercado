@@ -49,11 +49,7 @@ public class GestionPedidosITest {
 		// Se crea el EJBContainter con propiedades
 		ec = EJBContainer.createEJBContainer(properties);
 
-//		INFORMACIÓN: Portable JNDI names for EJB GestionPedidos: 
-//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IProcesaPedidosRemote,
-//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IGestionPedidosRemote,
-//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IGestionPedidosLocal, 
-//		java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IProcesaPedidosLocal]
+//		INFORMACIÓN: Portable JNDI names for EJB GestionPedidos:
 		sut = (IGestionPedidosRemote) ec.getContext().lookup("java:global/ejb-app/SupermercadoBusiness-0_0_1-SNAPSHOT/GestionPedidos!es.unican.ps.supermercado.businessLayer.IGestionPedidosRemote");
 	}
 	

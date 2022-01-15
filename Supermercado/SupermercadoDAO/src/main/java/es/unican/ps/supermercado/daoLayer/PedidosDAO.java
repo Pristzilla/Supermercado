@@ -2,7 +2,7 @@ package es.unican.ps.supermercado.daoLayer;
 
 import java.util.List;
 
-import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -11,7 +11,7 @@ import javax.persistence.Query;
 
 import es.unican.ps.supermercado.entities.Pedido;
 
-@Stateful
+@Stateless
 public class PedidosDAO implements IPedidosDAOLocal, IPedidosDAORemote {
 
 	@PersistenceContext(unitName="supermercadoPU")

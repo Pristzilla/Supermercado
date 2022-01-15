@@ -48,6 +48,7 @@ public class GestionPedidosBean implements Serializable {
 	
 	private String horaReco;
 	private String dni;
+	private String referencia;
 	private Pedido pedido;
 	private Articulo articuloSeleccionado;
 	private int udsArticulo;
@@ -64,6 +65,14 @@ public class GestionPedidosBean implements Serializable {
 	}
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+
+	public String getReferencia() {
+		return referencia;
+	}
+
+	public void setReferencia(String referencia) {
+		this.referencia = referencia;
 	}
 
 	public int getUdsArticulo() {
@@ -150,6 +159,7 @@ public class GestionPedidosBean implements Serializable {
 			return "errorHora";
 		}
 		pedido = ped;
+		referencia = pedido.getRef();
 		return pantallaRealizado;
 	}
 	
@@ -158,6 +168,7 @@ public class GestionPedidosBean implements Serializable {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		this.pedido = null;
 		dni="";
+		referencia="";
 		return pantallaInicio;
 	}
 

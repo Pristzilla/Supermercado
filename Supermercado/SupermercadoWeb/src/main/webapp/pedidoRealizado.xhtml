@@ -8,6 +8,18 @@
 </h:head>
 <h:body>
 	<h1>Pedido Realizado</h1>
+	<br></br>
+	<h:outputLabel value="Referencia: " />
+	<h:outputText id="refPedido" value="#{gestionPedidosBean.referencia}" />
+	<br></br>
+	<h:outputLabel value="Precio: " />
+	<h:outputText id="precioPedido"
+		value="#{gestionPedidosBean.pedido.precioTotal}" />
+	<br></br>
+	<h:outputLabel value="Hora Recogida: " />
+	<h:outputText id="horaRecogidaPedido"
+		value="#{gestionPedidosBean.horaReco}" />
+
 	<h:form>
 		<h:commandButton id="buttonLogOut" value="Volver al inicio"
 			action="#{gestionPedidosBean.cerrarSesion}" />

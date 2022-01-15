@@ -2,6 +2,7 @@ package es.unican.ps.supermercado.business;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.ScheduleExpression;
@@ -25,7 +26,8 @@ public class GestionTimer {
 	
 
 	// programar el timer mensual como uno que recorra todos los usuarios actualizando 
-	// el valor de compras mensuales
+	// el valor de compras mensuales. 
+	@PostConstruct
 	public void inicializaTimer() {
 		
 		ScheduleExpression dia1mes = new ScheduleExpression().dayOfMonth(1);
